@@ -1,10 +1,14 @@
-import NavBar from "./components/navBar";
+import NavBar from "./components/NavBar";
+import Receipt from "./components/Receipt";
 
 function App() {
   return (
     <>
-      <div className="min-h-screen w-full bg-[#12544F]">
-        <NavBar />
+      <div className="min-h-screen w-full ">
+        <div className="grid grid-cols-2 gap-2">
+          <NavBar />
+          <Receipt />
+        </div>
       </div>
     </>
   );
