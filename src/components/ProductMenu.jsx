@@ -1,70 +1,32 @@
-function ProductMenu() {
+function ProductMenu({ product }) {
   return (
     <section className="mt-6">
-      <nav className="flex flex-wrap gap-3">
-        <button className="rounded-full bg-stone-900 px-6 py-3 text-white">All</button>
-        <button className="rounded-full border bg-white px-6 py-3">Coffee</button>
-        <button className="rounded-full border bg-white px-6 py-3">Cold drinks</button>
-        <button className="rounded-full border bg-white px-6 py-3">Bakery</button>
-        <button className="rounded-full border bg-white px-6 py-3">Kitchen</button>
+      <nav className="flex gap-2 overflow-x-auto pb-1">
+        <button type="button" className="shrink-0 rounded-full bg-stone-900 px-5 py-2.5 text-sm text-white">All</button>
+        <button type="button" className="shrink-0 rounded-full border border-stone-200 bg-white px-5 py-2.5 text-sm">Coffee</button>
+        <button type="button" className="shrink-0 rounded-full border border-stone-200 bg-white px-5 py-2.5 text-sm">Cold drinks</button>
+        <button type="button" className="shrink-0 rounded-full border border-stone-200 bg-white px-5 py-2.5 text-sm">Bakery</button>
+        <button type="button" className="shrink-0 rounded-full border border-stone-200 bg-white px-5 py-2.5 text-sm">Kitchen</button>
       </nav>
 
-      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:grid-cols-4">
-        <article className="rounded-2xl bg-white p-3 shadow-sm">
-          <div className="h-48 rounded-xl bg-orange-100"></div>
-          <div className="p-2">
-            <h2 className="font-semibold">Flat white</h2>
-            <p className="text-sm text-stone-500">Double shot, silky milk</p>
-            <div className="mt-3 flex items-center justify-between">
-              <span className="font-bold">$4.20</span>
-              <button className="h-10 w-10 rounded-full bg-orange-500 text-xl text-white">
-                +
-              </button>
+      <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:grid-cols-3">
+        {product.map((item, index) => (
+          <article key={`${item.productName}-${index}`} className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
+            <div className="h-40 rounded-t-2xl bg-orange-100"></div>
+            <div className="p-4">
+              <h2 className="font-semibold text-stone-900">{item.productName}</h2>
+              <p className="mt-1 min-h-10 text-sm text-stone-500">{item.description || "No description"}</p>
+              <div className="mt-3 flex items-center justify-between gap-3">
+                <span className="font-bold text-stone-900">{item.price ? `$${item.price}` : "$0.00"}</span>
+                <button type="button" className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-500 text-xl text-white">
+                  +
+                </button>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <article className="rounded-2xl bg-white p-3 shadow-sm">
-          <div className="h-48 rounded-xl bg-orange-100"></div>
-          <div className="p-2">
-            <h2 className="font-semibold">Iced latte</h2>
-            <p className="text-sm text-stone-500">Over ice, lightly sweet</p>
-            <div className="mt-3 flex items-center justify-between">
-              <span className="font-bold">$4.80</span>
-              <button className="h-10 w-10 rounded-full bg-orange-500 text-xl text-white">
-                +
-              </button>
-            </div>
-          </div>
-        </article>
+        ))}
 
-        <article className="rounded-2xl bg-white p-3 shadow-sm">
-          <div className="h-48 rounded-xl bg-green-100"></div>
-          <div className="p-2">
-            <h2 className="font-semibold">Matcha latte</h2>
-            <p className="text-sm text-stone-500">Ceremonial grade matcha</p>
-            <div className="mt-3 flex items-center justify-between">
-              <span className="font-bold">$5.20</span>
-              <button className="h-10 w-10 rounded-full bg-orange-500 text-xl text-white">
-                +
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <article className="rounded-2xl bg-white p-3 shadow-sm">
-          <div className="h-48 rounded-xl bg-orange-100"></div>
-          <div className="p-2">
-            <h2 className="font-semibold">Orange juice</h2>
-            <p className="text-sm text-stone-500">Squeezed to order</p>
-            <div className="mt-3 flex items-center justify-between">
-              <span className="font-bold">$4.50</span>
-              <button className="h-10 w-10 rounded-full bg-orange-500 text-xl text-white">
-                +
-              </button>
-            </div>
-          </div>
-        </article>
       </div>
     </section>
   );
