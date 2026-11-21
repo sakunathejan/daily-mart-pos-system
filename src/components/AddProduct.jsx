@@ -1,11 +1,12 @@
 import { useState } from "react";
 import ProductMenu from "./ProductMenu";
 
-function AddProduct() {
+function AddProduct({onChooseProduct, subTotalProductsPrice}) {
     const [productName, setProductName] = useState("");
     const [category, setCategory] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
+    const [image, setImage] = useState(null);
     const [showForm, setShowForm] = useState(false);
 
     const [product, setProduct] = useState([]);
@@ -26,10 +27,24 @@ function AddProduct() {
         setPrice(event.target.value);
     }
 
-    function addProduct(){
-        const updateProduct = {productName: productName , category: category, description:description,price:price}
-        setProduct(p => ([...p, updateProduct]));
+    function handleImage(event){
+        if(event.target.files && event.target.files[0]){
+            const file = event.target.files[0];
+
+            setImage(URL.createObjectURL(file));
+        }
+
+        
+        
     }
+
+    function addProduct(){
+        const updateProduct = {productName: productName , category: category, description:description,price:price, image:image}
+        setProduct(p => ([...p, updateProduct]));
+        console.log(product.image)
+    
+    }
+    
 
     return (
         <>
@@ -69,12 +84,22 @@ function AddProduct() {
                                 <input type="text" name="input" value={price} className="mt-1 h-11 w-full rounded-lg border border-slate-300 px-3" onChange={handlePrice}/>
                             </label>
 
+                            <label className="block text-sm font-medium text-stone-700">
+                                Product image
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    className="mt-1 block w-full cursor-pointer rounded-lg border border-dashed border-stone-300 bg-stone-50 text-sm text-stone-500 transition hover:bg-stone-100 file:mr-4 file:cursor-pointer file:border-0 file:bg-orange-100 file:px-4 file:py-3 file:font-semibold file:text-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                                    onChange={handleImage}
+                                />
+                            </label>
+
                             <button type="button" className="mt-2 h-11 w-full rounded-xl bg-orange-500 font-semibold text-white cursor-pointer" onClick={addProduct}>Add Product</button>
                         </div>
                     </div>
                 </div>
             )}
-            <ProductMenu product={product}/>
+            <ProductMenu product={product} onChooseProduct ={onChooseProduct} subTotalProductsPrice={subTotalProductsPrice}/>
             <button
                 type="button"
                 aria-label="Add product"
