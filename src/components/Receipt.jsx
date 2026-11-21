@@ -1,6 +1,11 @@
+import { useState } from "react";
+import ChargePopUp from "./ChargePopUp";
+
 function Receipt({ choosedProduct, subTotal }) {
   const tax = Number(subTotal) * 0.08;
   const total = Number(subTotal + tax);
+
+  const [showForm, setShowForm] = useState(false);
 
   return (
     <div className="h-fit w-full rounded-2xl border border-stone-200 bg-white p-5 shadow-sm lg:sticky lg:top-6">
@@ -78,9 +83,11 @@ function Receipt({ choosedProduct, subTotal }) {
         </div>
       </div>
 
-      <button
-        type="button" className="mt-5 w-full rounded-xl bg-orange-500 px-4 py-3 font-semibold text-white opacity-50" > Charge </button>
+      <button type="button" className="mt-5 w-full rounded-xl bg-orange-500 px-4 py-3 font-semibold text-white opacity-50" onClick={()=> setShowForm(true)} > Charge </button>
+      <ChargePopUp showForm = {showForm} setShowForm = {setShowForm}/>
     </div>
+
+    
   );
 }
 

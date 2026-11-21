@@ -1,79 +1,72 @@
-function ChargePopUp(){
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-stone-950/50 p-4">
-      <section
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="payment-title"
-        className="w-full max-w-[550px] rounded-[28px] bg-white p-6 shadow-2xl sm:p-8"
-      >
-        <h2 id="payment-title" className="text-2xl font-bold text-stone-900">
-          Take payment
-        </h2>
-        <p className="mt-4 text-5xl font-bold tracking-tight text-stone-900">
-          Rs. 20.52
-        </p>
+import { useState } from "react";
 
-        <div className="mt-8 grid grid-cols-2 rounded-2xl bg-stone-100 p-1">
-          <button
-            type="button"
-            className="rounded-xl bg-white py-3 text-base font-semibold text-stone-900 shadow-sm"
-          >
-            Cash
-          </button>
-          <button
-            type="button"
-            className="rounded-xl py-3 text-base font-medium text-stone-500"
-          >
-            Card
-          </button>
-        </div>
+function ChargePopUp({showForm, setShowForm}) {
 
-        <div className="mt-4 flex gap-2">
-          <button
-            type="button"
-            className="rounded-xl border border-stone-200 bg-stone-50 px-4 py-2.5 font-medium text-stone-800"
-          >
-            Exact
-          </button>
-          <button
-            type="button"
-            className="rounded-xl border border-stone-200 bg-stone-50 px-4 py-2.5 font-medium text-stone-800"
-          >
-            Rs. 50
-          </button>
-        </div>
+    
 
-        <label htmlFor="cash-received" className="sr-only">
-          Cash received
-        </label>
-        <input
-          id="cash-received"
-          type="number"
-          inputMode="decimal"
-          placeholder="Cash received"
-          className="mt-4 h-[70px] w-full rounded-2xl border border-stone-200 bg-stone-50 px-5 text-2xl text-stone-900 outline-none placeholder:text-stone-500 focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
-        />
-        <p className="mt-4 text-base text-stone-700">
-          Enter the amount received.
-        </p>
+    return (
+        <>
+            {showForm && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-stone-950/40 p-3 backdrop-blur-[2px] sm:p-5">
+                    <section role="dialog" aria-modal="true" aria-labelledby="payment-title" className="group my-auto w-full max-w-[560px] rounded-[28px] bg-white p-7 shadow-[0_24px_80px_-20px_rgba(36,28,21,0.5)]" >
+                        <h2 id="payment-title" className="text-2xl font-bold tracking-tight text-[#241c15]" >
+                            Take payment
+                        </h2>
+                        <p className="mt-4 text-[52px] font-extrabold leading-none tracking-tight text-[#241c15]"> $20.52 </p>
 
-        <div className="mt-4 grid grid-cols-[auto_1fr] gap-3">
-          <button
-            type="button"
-            className="rounded-2xl border border-stone-200 px-5 py-4 font-semibold text-stone-800"
-          >
-            Cancel
-          </button>
-          <button
-            type="button"
-            className="rounded-2xl bg-orange-500 px-5 py-4 font-semibold text-white"
-          >
-            Complete sale
-          </button>
-        </div>
-      </section>
-    </div>
-  );
+                        {/* Cash / Card toggle */}
+                        <div className="mt-8 grid grid-cols-2 rounded-[18px] border border-[#ece7dc] bg-[#f6f3ec] p-[5px]">
+                            <input type="radio" name="payment-method" id="t-cash" className="sr-only" defaultChecked />
+                            <input type="radio" name="payment-method" id="t-card" className="sr-only" />
+                            <label htmlFor="t-cash" className="cursor-pointer rounded-[14px] py-3.5 text-center text-[17px] font-medium text-[#8a8478] transition group-has-[#t-cash:checked]:bg-white group-has-[#t-cash:checked]:text-[#241c15] group-has-[#t-cash:checked]:shadow-[0_1px_3px_rgba(36,28,21,0.15)]" >
+                                Cash
+                            </label>
+                            <label htmlFor="t-card" className="cursor-pointer rounded-[14px] py-3.5 text-center text-[17px] font-medium text-[#8a8478] transition group-has-[#t-card:checked]:bg-white group-has-[#t-card:checked]:text-[#241c15] group-has-[#t-card:checked]:shadow-[0_1px_3px_rgba(36,28,21,0.15)]" >
+                                Card
+                            </label>
+                        </div>
+
+                        {/* Cash panel */}
+                        <div className="group-has-[#t-card:checked]:hidden">
+                            <div className="mt-4 flex gap-2.5">
+                                <button type="button" className="rounded-xl border border-[#ece7dc] bg-[#f6f3ec] px-4 py-2.5 text-[17px] font-semibold text-[#241c15] transition hover:bg-[#efeadf]" >
+                                    Exact
+                                </button>
+                                <button type="button" className="rounded-xl border border-[#ece7dc] bg-[#f6f3ec] px-4 py-2.5 text-[17px] font-semibold text-[#241c15] transition hover:bg-[#efeadf]" >
+                                    $50
+                                </button>
+                            </div>
+
+                            <label htmlFor="cash-received" className="sr-only">
+                                Cash received
+                            </label>
+                            <input id="cash-received" type="text" inputMode="decimal" autoComplete="off" placeholder="Cash received" className="mt-4 h-[70px] w-130 rounded-2xl border border-[#ece7dc] bg-[#f6f3ec] px-5 text-[28px] text-[#241c15] outline-none placeholder:text-[#77726a] focus:border-orange-400 focus:ring-4 focus:ring-orange-100" />
+                            <p className="mt-4 text-[17px] text-[#3b332b]">
+                                Enter the amount received.
+                            </p>
+                        </div>
+
+                        {/* Card panel */}
+                        <div className="hidden group-has-[#t-card:checked]:block">
+                            <p className="mb-6 mt-8 text-[17px] text-[#3b332b]">
+                                Charge the card on the terminal, then complete the sale.
+                            </p>
+                        </div>
+
+                        {/* Actions */}
+                        <div className="mt-5 grid grid-cols-[auto_1fr] gap-3">
+                            <button type="button" className="rounded-2xl border border-[#ece7dc] bg-white px-6 py-4 text-[17px] font-semibold text-[#241c15] transition hover:bg-[#faf8f3]" onClick={()=>setShowForm(false)} >
+                                Cancel
+                            </button>
+                            <button type="button" className="rounded-2xl bg-[#f9bdad] px-5 py-4 text-[17px] font-bold text-white transition hover:bg-[#f6ad99] group-has-[#t-card:checked]:bg-orange-600 group-has-[#t-card:checked]:hover:bg-orange-700" >
+                                Complete sale
+                            </button>
+                        </div>
+                    </section>
+                </div>
+            )}
+        </>
+    );
 }
-export default ChargePopUp
+
+export default ChargePopUp;

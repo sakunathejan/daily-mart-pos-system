@@ -30,7 +30,7 @@ function App() {
         <Receipt choosedProduct={choosedProduct} subTotal={subTotal} />
       </div>
 
-      <ChargePopUp />
+      {/* <ChargePopUp /> */}
     </main>
   );
 }
