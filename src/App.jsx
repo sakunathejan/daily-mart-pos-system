@@ -3,6 +3,7 @@ import Receipt from "./components/Receipt";
 import AddProduct from "./components/AddProduct";
 import { useState } from "react";
 import ChargePopUp from "./components/ChargePopUp";
+import PaymentSuccessPopUp from "./components/PaymentSuccessPopUp";
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
         <Receipt choosedProduct={choosedProduct} subTotal={subTotal} />
       </div>
 
-      {/* <ChargePopUp /> */}
+      <PaymentSuccessPopUp />
     </main>
   );
 }

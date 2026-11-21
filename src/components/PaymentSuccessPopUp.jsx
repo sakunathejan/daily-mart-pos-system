@@ -1,0 +1,52 @@
+function PaymentSuccessPopUp() {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-stone-950/40 p-3 backdrop-blur-[2px] sm:p-5">
+      <section
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="success-title"
+        className="my-auto w-full max-w-[560px] rounded-[28px] bg-white p-6 text-center shadow-[0_24px_80px_-20px_rgba(36,28,21,0.5)]"
+      >
+        {/* Check badge */}
+        <div className="mx-auto flex h-[85px] w-[85px] items-center justify-center rounded-full bg-[#2fa06b]">
+          <svg
+            viewBox="0 0 24 24"
+            className="h-11 w-11"
+            fill="none"
+            stroke="white"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12.5l4.5 4.5L19 7" />
+          </svg>
+        </div>
+
+        <h2
+          id="success-title"
+          className="mt-5 text-[26px] font-bold tracking-tight text-[#241c15]"
+        >
+          Paid $4.54
+        </h2>
+
+        <p className="mt-5 text-[17px] text-[#241c15]">
+          Order #204 · Dine in · Cash
+        </p>
+
+        <p className="mt-4 text-[17px] text-[#8a8478]">
+          1 item sold. Receipt sent to the printer.
+        </p>
+
+        <button
+          type="button"
+          className="mt-6 w-full rounded-2xl bg-[#f25c2e] px-5 py-[18px] text-[17px] font-bold text-white transition hover:bg-[#e04f22] focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-200"
+        >
+          Start new order
+        </button>
+      </section>
+    </div>
+  );
+}
+
+export default PaymentSuccessPopUp;
