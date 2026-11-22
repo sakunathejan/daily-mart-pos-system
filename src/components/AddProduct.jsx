@@ -14,23 +14,23 @@ function AddProduct({ onChooseProduct, subTotalProductsPrice, searched }) {
         {
             productName: "Milk",
             category: "Diary",
-            description: "This is milk",
+            description: "Fresh, creamy whole milk with a naturally rich flavor, packed for freshness and perfect for drinking, coffee, tea, cereals, desserts, and everyday cooking.",
             price: 1500,
-            image: ""
+            image: "https://images.unsplash.com/photo-1634141510639-d691d86f47be?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
         },
         {
             productName: "Yogurt",
             category: "Dairy",
-            description: "Fresh creamy yogurt",
+            description: "Fresh, creamy yogurt with a smooth texture and pleasantly tangy flavor, perfect for enjoying on its own or pairing with fruit, granola, or meals.",
             price: 450,
-            image: ""
+            image: "https://images.unsplash.com/photo-1627308595228-9d0497edbe74?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
         },
         {
             productName: "Cheese",
             category: "Dairy",
-            description: "Rich cheddar cheese",
+            description: "Rich, mature cheddar cheese with a smooth texture and bold savory flavor, ideal for sandwiches, burgers, pasta, snacks, and everyday cooking.",
             price: 1200,
-            image: ""
+            image: "https://images.unsplash.com/photo-1683314573422-649a3c6ad784?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
         },
     ]);
 
