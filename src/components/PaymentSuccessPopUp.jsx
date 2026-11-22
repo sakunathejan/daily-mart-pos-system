@@ -40,7 +40,7 @@ function PaymentSuccessPopUp({ showSuccessForm, setShowSuccessForm, total, setSh
                             {choosedProduct.length} item sold. Receipt sent to the printer.
                         </p>
 
-                        <button type="button" className="mt-6 w-full rounded-2xl bg-[#f25c2e] px-5 py-[18px] text-[17px] font-bold text-white transition hover:bg-[#e04f22] focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-200" onClick={()=>{setShowSuccessForm(false); setShowForm(false); onClearOrder(false); handleOrderId()}}>Start new order</button>
+                        <button type="button" className="mt-6 w-full rounded-2xl bg-[#f25c2e] px-5 py-[18px] text-[17px] font-bold text-white transition-colors duration-200 hover:bg-[#e04f22] hover:shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-200" onClick={()=>{setShowSuccessForm(false); setShowForm(false); onClearOrder(false); handleOrderId()}}>Start new order</button>
                     </section>
                 </div>
             )}

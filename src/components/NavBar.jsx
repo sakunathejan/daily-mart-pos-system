@@ -19,7 +19,7 @@ function NavBar({ search, onSearch }) {
           placeholder="Search the menu"
           value={search}
           onChange={(event) => onSearch(event.target.value)}
-          className="w-full rounded-full border border-stone-300 bg-white px-4 py-3 text-stone-900 placeholder:text-stone-400"
+          className="w-full rounded-full border border-stone-300 bg-white px-4 py-3 text-stone-900 placeholder:text-stone-400 transition-colors duration-200 hover:border-stone-400 focus:border-orange-400 focus:outline-none focus:ring-4 focus:ring-orange-100"
         />
       </label>
     </header>

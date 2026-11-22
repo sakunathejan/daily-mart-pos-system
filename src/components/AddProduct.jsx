@@ -78,7 +78,7 @@ function AddProduct({ onChooseProduct, subTotalProductsPrice, searched }) {
                             <button
                                 type="button"
                                 aria-label="Close add product form"
-                                className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-600"
+                                className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-600 transition-colors duration-200 hover:border-stone-400 hover:bg-stone-100 hover:text-stone-900"
                                 onClick={() => setShowForm(false)}
                             >
                                 x
@@ -88,22 +88,22 @@ function AddProduct({ onChooseProduct, subTotalProductsPrice, searched }) {
                         <div className="space-y-4">
                             <label className="block text-sm font-medium text-stone-700">
                                 Product Name
-                                <input type="text" name="input" value={productName} className="mt-1 h-11 w-full rounded-lg border border-slate-300 px-3" onChange={handleProductName} />
+                                <input type="text" name="input" value={productName} className="mt-1 h-11 w-full rounded-lg border border-slate-300 px-3 transition-colors duration-200 hover:border-stone-400 focus:border-orange-400 focus:outline-none focus:ring-4 focus:ring-orange-100" onChange={handleProductName} />
                             </label>
 
                             <label className="block text-sm font-medium text-stone-700">
                                 Category
-                                <input type="text" name="input" value={category} className="mt-1 h-11 w-full rounded-lg border border-slate-300 px-3" onChange={handleCategory} />
+                                <input type="text" name="input" value={category} className="mt-1 h-11 w-full rounded-lg border border-slate-300 px-3 transition-colors duration-200 hover:border-stone-400 focus:border-orange-400 focus:outline-none focus:ring-4 focus:ring-orange-100" onChange={handleCategory} />
                             </label>
 
                             <label className="block text-sm font-medium text-stone-700">
                                 Description
-                                <input type="text" name="input" value={description} className="mt-1 h-11 w-full rounded-lg border border-slate-300 px-3" onChange={handleDescription} />
+                                <input type="text" name="input" value={description} className="mt-1 h-11 w-full rounded-lg border border-slate-300 px-3 transition-colors duration-200 hover:border-stone-400 focus:border-orange-400 focus:outline-none focus:ring-4 focus:ring-orange-100" onChange={handleDescription} />
                             </label>
 
                             <label className="block text-sm font-medium text-stone-700">
                                 Price
-                                <input type="text" name="input" value={price} className="mt-1 h-11 w-full rounded-lg border border-slate-300 px-3" onChange={handlePrice} />
+                                <input type="text" name="input" value={price} className="mt-1 h-11 w-full rounded-lg border border-slate-300 px-3 transition-colors duration-200 hover:border-stone-400 focus:border-orange-400 focus:outline-none focus:ring-4 focus:ring-orange-100" onChange={handlePrice} />
                             </label>
 
                             <label className="block text-sm font-medium text-stone-700">
@@ -116,7 +116,7 @@ function AddProduct({ onChooseProduct, subTotalProductsPrice, searched }) {
                                 />
                             </label>
 
-                            <button type="button" className="mt-2 h-11 w-full rounded-xl bg-orange-500 font-semibold text-white cursor-pointer" onClick={addProduct}>Add Product</button>
+                            <button type="button" className="mt-2 h-11 w-full rounded-xl bg-orange-500 font-semibold text-white cursor-pointer transition-colors duration-200 hover:bg-orange-600 hover:shadow-md" onClick={addProduct}>Add Product</button>
                         </div>
                     </div>
                 </div>
@@ -125,7 +125,7 @@ function AddProduct({ onChooseProduct, subTotalProductsPrice, searched }) {
             <button
                 type="button"
                 aria-label="Add product"
-                className="fixed bottom-4 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-orange-500 text-2xl text-white shadow-lg sm:bottom-6 sm:right-6"
+                className="fixed bottom-4 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-orange-500 text-2xl text-white shadow-lg transition duration-200 hover:scale-105 hover:bg-orange-600 hover:shadow-xl sm:bottom-6 sm:right-6"
                 onClick={() => setShowForm(true)}
             >
                 +

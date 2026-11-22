@@ -40,7 +40,7 @@ function Receipt({ choosedProduct, subTotal, onClearOrder }) {
           type="button"
           className={`rounded-lg border border-stone-200/70 py-3 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-1 ${
             dineMode === "Dine In"
-              ? "bg-white text-stone-900 shadow-sm ring-1 ring-stone-200/70"
+              ? "bg-white text-stone-900 shadow-sm ring-1 ring-stone-200/70 hover:bg-stone-50"
               : "text-stone-500 hover:bg-white/70 hover:text-stone-800"
           }`}
           onClick={()=> setdineMode("Dine In")}
@@ -52,7 +52,7 @@ function Receipt({ choosedProduct, subTotal, onClearOrder }) {
           type="button"
           className={`rounded-lg border border-stone-200/70 py-3 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-1 ${
             dineMode === "Takeaway"
-              ? "bg-white text-stone-900 shadow-sm ring-1 ring-stone-200/70"
+              ? "bg-white text-stone-900 shadow-sm ring-1 ring-stone-200/70 hover:bg-stone-50"
               : "text-stone-500 hover:bg-white/70 hover:text-stone-800"
           }`}
           onClick={()=> setdineMode("Takeaway")}
@@ -107,7 +107,7 @@ function Receipt({ choosedProduct, subTotal, onClearOrder }) {
         </div>
       </div>
 
-      <button type="button" className="mt-5 w-full rounded-xl bg-orange-500 px-4 py-3 font-semibold text-white opacity-50" onClick={()=> setShowForm(true)} > Charge </button>
+      <button type="button" className="mt-5 w-full rounded-xl bg-orange-500 px-4 py-3 font-semibold text-white opacity-50 transition-colors duration-200 hover:bg-orange-600 hover:shadow-md" onClick={()=> setShowForm(true)} > Charge </button>
       <ChargePopUp showForm = {showForm} setShowForm = {setShowForm} total={total} dineMode={dineMode} onClearOrder={onClearOrder} choosedProduct={choosedProduct} orderNo={orderNo} handleOrderId={handleOrderId}/>
     </div>
 

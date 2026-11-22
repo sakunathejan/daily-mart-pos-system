@@ -6,6 +6,20 @@
 @layer base {
   button {
     border: 0 solid transparent;
+    cursor: pointer;
+  }
+
+  button:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  label[for],
+  input[type="radio"],
+  input[type="checkbox"],
+  input[type="file"],
+  [role="button"],
+  a[href] {
+    cursor: pointer;
   }
 }
 

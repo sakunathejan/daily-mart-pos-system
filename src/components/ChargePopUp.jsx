@@ -27,10 +27,10 @@ function ChargePopUp({showForm, setShowForm, total, dineMode, onClearOrder, choo
                         <div className="mt-8 grid grid-cols-2 rounded-[18px] border border-[#ece7dc] bg-[#f6f3ec] p-[5px]">
                             <input type="radio" name="payment-method" id="t-cash" className="sr-only" defaultChecked onChange={() => setPaymentMethod("Cash")} />
                             <input type="radio" name="payment-method" id="t-card" className="sr-only" onChange={() => setPaymentMethod("Card")} />
-                            <label htmlFor="t-cash" className="cursor-pointer rounded-[14px] py-3.5 text-center text-[17px] font-medium text-[#8a8478] transition group-has-[#t-cash:checked]:bg-white group-has-[#t-cash:checked]:text-[#241c15] group-has-[#t-cash:checked]:shadow-[0_1px_3px_rgba(36,28,21,0.15)]" >
+                            <label htmlFor="t-cash" className="cursor-pointer rounded-[14px] py-3.5 text-center text-[17px] font-medium text-[#8a8478] transition hover:bg-white/60 group-has-[#t-cash:checked]:bg-white group-has-[#t-cash:checked]:text-[#241c15] group-has-[#t-cash:checked]:shadow-[0_1px_3px_rgba(36,28,21,0.15)]" >
                                 Cash
                             </label>
-                            <label htmlFor="t-card" className="cursor-pointer rounded-[14px] py-3.5 text-center text-[17px] font-medium text-[#8a8478] transition group-has-[#t-card:checked]:bg-white group-has-[#t-card:checked]:text-[#241c15] group-has-[#t-card:checked]:shadow-[0_1px_3px_rgba(36,28,21,0.15)]" >
+                            <label htmlFor="t-card" className="cursor-pointer rounded-[14px] py-3.5 text-center text-[17px] font-medium text-[#8a8478] transition hover:bg-white/60 group-has-[#t-card:checked]:bg-white group-has-[#t-card:checked]:text-[#241c15] group-has-[#t-card:checked]:shadow-[0_1px_3px_rgba(36,28,21,0.15)]" >
                                 Card
                             </label>
                         </div>
