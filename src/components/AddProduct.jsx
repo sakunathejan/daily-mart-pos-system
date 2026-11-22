@@ -78,7 +78,7 @@ function AddProduct({ onChooseProduct, subTotalProductsPrice, searched }) {
                             <button
                                 type="button"
                                 aria-label="Close add product form"
-                                className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-600 transition-colors duration-200 hover:border-stone-400 hover:bg-stone-100 hover:text-stone-900"
+                                className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-slate-300 text-slate-600 transition-colors duration-200 hover:border-stone-400 hover:bg-stone-100 hover:text-stone-900 active:scale-[0.97]"
                                 onClick={() => setShowForm(false)}
                             >
                                 x
@@ -116,7 +116,7 @@ function AddProduct({ onChooseProduct, subTotalProductsPrice, searched }) {
                                 />
                             </label>
 
-                            <button type="button" className="mt-2 h-11 w-full rounded-xl bg-orange-500 font-semibold text-white cursor-pointer transition-colors duration-200 hover:bg-orange-600 hover:shadow-md" onClick={addProduct}>Add Product</button>
+                            <button type="button" className="mt-2 h-11 w-full cursor-pointer rounded-xl border-0 bg-orange-500 font-semibold text-white transition-colors duration-200 hover:bg-orange-600 hover:shadow-md active:scale-[0.97]" onClick={addProduct}>Add Product</button>
                         </div>
                     </div>
                 </div>
@@ -125,7 +125,7 @@ function AddProduct({ onChooseProduct, subTotalProductsPrice, searched }) {
             <button
                 type="button"
                 aria-label="Add product"
-                className="fixed bottom-4 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-orange-500 text-2xl text-white shadow-lg transition duration-200 hover:scale-105 hover:bg-orange-600 hover:shadow-xl sm:bottom-6 sm:right-6"
+                className="fixed bottom-4 right-4 z-40 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border-0 bg-orange-500 text-2xl text-white shadow-lg transition duration-200 hover:scale-105 hover:bg-orange-600 hover:shadow-xl active:scale-[0.97] sm:bottom-6 sm:right-6"
                 onClick={() => setShowForm(true)}
             >
                 +

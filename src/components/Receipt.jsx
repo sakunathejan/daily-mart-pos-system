@@ -29,7 +29,7 @@ function Receipt({ choosedProduct, subTotal, onClearOrder }) {
         </div>
         <button
           type="button"
-          className="rounded-lg border border-stone-200 px-3 py-2 text-sm font-medium text-stone-500 transition hover:border-red-200 hover:bg-red-50 hover:text-red-600"
+          className="cursor-pointer rounded-lg border border-stone-200 px-3 py-2 text-sm font-medium text-stone-500 transition hover:border-red-200 hover:bg-red-50 hover:text-red-600 active:scale-[0.97]"
           onClick={onClearOrder}
         >
           Clear
@@ -39,7 +39,7 @@ function Receipt({ choosedProduct, subTotal, onClearOrder }) {
       <div className="mt-5 grid grid-cols-2 gap-1 rounded-xl border border-stone-200/70 bg-stone-100 p-1">
         <button
           type="button"
-          className={`rounded-lg border border-stone-200/70 py-3 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-1 ${
+          className={`cursor-pointer rounded-lg border border-stone-200/70 py-3 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-1 active:scale-[0.97] ${
             dineMode === "Dine In"
               ? "bg-white text-stone-900 shadow-sm ring-1 ring-stone-200/70 hover:bg-stone-50"
               : "text-stone-500 hover:bg-white/70 hover:text-stone-800"
@@ -51,7 +51,7 @@ function Receipt({ choosedProduct, subTotal, onClearOrder }) {
 
         <button
           type="button"
-          className={`rounded-lg border border-stone-200/70 py-3 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-1 ${
+          className={`cursor-pointer rounded-lg border border-stone-200/70 py-3 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-1 active:scale-[0.97] ${
             dineMode === "Takeaway"
               ? "bg-white text-stone-900 shadow-sm ring-1 ring-stone-200/70 hover:bg-stone-50"
               : "text-stone-500 hover:bg-white/70 hover:text-stone-800"
@@ -108,10 +108,10 @@ function Receipt({ choosedProduct, subTotal, onClearOrder }) {
         </div>
       </div>
       {choosedProduct.length === 0 ?(
-        <button type="button" className="mt-5 w-full rounded-xl bg-orange-500 px-4 py-3 font-semibold text-white opacity-50 transition-colors duration-200 hover:bg-orange-600 hover:shadow-md" onClick={()=> toast.warning("Add at least one product to the order before charging.")} > Charge </button>
+        <button type="button" className="mt-5 w-full cursor-pointer rounded-xl border-0 bg-orange-500 px-4 py-3 font-semibold text-white opacity-50 transition-colors duration-200 hover:bg-orange-600 hover:shadow-md active:scale-[0.97]" onClick={()=> toast.warning("Add at least one product to the order before charging.")} > Charge </button>
       )
       :(
-        <button type="button" className="mt-5 w-full rounded-xl bg-orange-500 px-4 py-3 font-semibold text-white opacity-50 transition-colors duration-200 hover:bg-orange-600 hover:shadow-md" onClick={()=> setShowForm(true)} > Charge </button>
+        <button type="button" className="mt-5 w-full cursor-pointer rounded-xl border-0 bg-orange-500 px-4 py-3 font-semibold text-white opacity-50 transition-colors duration-200 hover:bg-orange-600 hover:shadow-md active:scale-[0.97]" onClick={()=> setShowForm(true)} > Charge </button>
       )}
 
       <ChargePopUp showForm = {showForm} setShowForm = {setShowForm} total={total} dineMode={dineMode} onClearOrder={onClearOrder} choosedProduct={choosedProduct} orderNo={orderNo} handleOrderId={handleOrderId}/>

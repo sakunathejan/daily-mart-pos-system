@@ -8,11 +8,11 @@ function ProductMenu({ product, onChooseProduct, subTotalProductsPrice, searched
   return (
     <section className="mt-6">
       <nav className="flex gap-2 overflow-x-auto pb-1">
-        <button type="button" className="shrink-0 rounded-full bg-stone-900 px-5 py-2.5 text-sm text-white transition-colors duration-200 hover:bg-stone-700">All</button>
-        <button type="button" className="shrink-0 rounded-full border border-stone-200 bg-white px-5 py-2.5 text-sm transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 hover:text-orange-800">Coffee</button>
-        <button type="button" className="shrink-0 rounded-full border border-stone-200 bg-white px-5 py-2.5 text-sm transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 hover:text-orange-800">Cold drinks</button>
-        <button type="button" className="shrink-0 rounded-full border border-stone-200 bg-white px-5 py-2.5 text-sm transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 hover:text-orange-800">Bakery</button>
-        <button type="button" className="shrink-0 rounded-full border border-stone-200 bg-white px-5 py-2.5 text-sm transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 hover:text-orange-800">Kitchen</button>
+        <button type="button" className="shrink-0 cursor-pointer rounded-full border-0 bg-stone-900 px-5 py-2.5 text-sm text-white transition-colors duration-200 hover:bg-stone-700 active:scale-[0.97]">All</button>
+        <button type="button" className="shrink-0 cursor-pointer rounded-full border border-stone-200 bg-white px-5 py-2.5 text-sm transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 hover:text-orange-800 active:scale-[0.97]">Coffee</button>
+        <button type="button" className="shrink-0 cursor-pointer rounded-full border border-stone-200 bg-white px-5 py-2.5 text-sm transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 hover:text-orange-800 active:scale-[0.97]">Cold drinks</button>
+        <button type="button" className="shrink-0 cursor-pointer rounded-full border border-stone-200 bg-white px-5 py-2.5 text-sm transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 hover:text-orange-800 active:scale-[0.97]">Bakery</button>
+        <button type="button" className="shrink-0 cursor-pointer rounded-full border border-stone-200 bg-white px-5 py-2.5 text-sm transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 hover:text-orange-800 active:scale-[0.97]">Kitchen</button>
       </nav>
       <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {filteredProducts.length === 0 ? (
@@ -38,7 +38,7 @@ function ProductMenu({ product, onChooseProduct, subTotalProductsPrice, searched
 
               <div className="mt-3 flex items-center justify-between gap-3">
                 <span className="font-bold text-stone-900">{item.price ? `Rs.${item.price}` : "Rs.0.00"}</span>
-                <button type="button" className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-500 text-xl text-white transition-colors duration-200 hover:bg-orange-600 hover:shadow-md" onClick={() => {onChooseProduct(item); subTotalProductsPrice(item.price)}}>+</button>
+                <button type="button" className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border-0 bg-orange-500 text-xl text-white transition-colors duration-200 hover:bg-orange-600 hover:shadow-md active:scale-[0.97]" onClick={() => {onChooseProduct(item); subTotalProductsPrice(item.price)}}>+</button>
               </div>
             </div>
           </article>

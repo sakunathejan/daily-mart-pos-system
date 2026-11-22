@@ -27,10 +27,10 @@ function ChargePopUp({showForm, setShowForm, total, dineMode, onClearOrder, choo
                         <div className="mt-8 grid grid-cols-2 rounded-[18px] border border-[#ece7dc] bg-[#f6f3ec] p-[5px]">
                             <input type="radio" name="payment-method" id="t-cash" className="sr-only" defaultChecked onChange={() => setPaymentMethod("Cash")} />
                             <input type="radio" name="payment-method" id="t-card" className="sr-only" onChange={() => setPaymentMethod("Card")} />
-                            <label htmlFor="t-cash" className="cursor-pointer rounded-[14px] py-3.5 text-center text-[17px] font-medium text-[#8a8478] transition hover:bg-white/60 group-has-[#t-cash:checked]:bg-white group-has-[#t-cash:checked]:text-[#241c15] group-has-[#t-cash:checked]:shadow-[0_1px_3px_rgba(36,28,21,0.15)]" >
+                            <label htmlFor="t-cash" className="cursor-pointer rounded-[14px] py-3.5 text-center text-[17px] font-medium text-[#8a8478] transition hover:bg-white/60 active:scale-[0.98] group-has-[#t-cash:checked]:bg-white group-has-[#t-cash:checked]:text-[#241c15] group-has-[#t-cash:checked]:shadow-[0_1px_3px_rgba(36,28,21,0.15)]" >
                                 Cash
                             </label>
-                            <label htmlFor="t-card" className="cursor-pointer rounded-[14px] py-3.5 text-center text-[17px] font-medium text-[#8a8478] transition hover:bg-white/60 group-has-[#t-card:checked]:bg-white group-has-[#t-card:checked]:text-[#241c15] group-has-[#t-card:checked]:shadow-[0_1px_3px_rgba(36,28,21,0.15)]" >
+                            <label htmlFor="t-card" className="cursor-pointer rounded-[14px] py-3.5 text-center text-[17px] font-medium text-[#8a8478] transition hover:bg-white/60 active:scale-[0.98] group-has-[#t-card:checked]:bg-white group-has-[#t-card:checked]:text-[#241c15] group-has-[#t-card:checked]:shadow-[0_1px_3px_rgba(36,28,21,0.15)]" >
                                 Card
                             </label>
                         </div>
@@ -38,10 +38,10 @@ function ChargePopUp({showForm, setShowForm, total, dineMode, onClearOrder, choo
                         {/* Cash panel */}
                         <div className="group-has-[#t-card:checked]:hidden">
                             <div className="mt-4 flex gap-2.5">
-                                <button type="button" className="rounded-xl border border-[#ece7dc] bg-[#f6f3ec] px-4 py-2.5 text-[17px] font-semibold text-[#241c15] transition hover:bg-[#efeadf]" onClick={() => setAmount(String(total))}>
+                                <button type="button" className="cursor-pointer rounded-xl border border-[#ece7dc] bg-[#f6f3ec] px-4 py-2.5 text-[17px] font-semibold text-[#241c15] transition hover:bg-[#efeadf] active:scale-[0.97]" onClick={() => setAmount(String(total))}>
                                     Exact
                                 </button>
-                                <button type="button" className="rounded-xl border border-[#ece7dc] bg-[#f6f3ec] px-4 py-2.5 text-[17px] font-semibold text-[#241c15] transition hover:bg-[#efeadf]" onClick={() => setAmount("50")}>
+                                <button type="button" className="cursor-pointer rounded-xl border border-[#ece7dc] bg-[#f6f3ec] px-4 py-2.5 text-[17px] font-semibold text-[#241c15] transition hover:bg-[#efeadf] active:scale-[0.97]" onClick={() => setAmount("50")}>
                                     $50
                                 </button>
                             </div>
@@ -64,10 +64,10 @@ function ChargePopUp({showForm, setShowForm, total, dineMode, onClearOrder, choo
 
                         {/* Actions */}
                         <div className="mt-5 grid grid-cols-[auto_1fr] gap-3">
-                            <button type="button" className="rounded-2xl border border-[#ece7dc] bg-white px-6 py-4 text-[17px] font-semibold text-[#241c15] transition hover:bg-[#faf8f3]" onClick={()=>setShowForm(false)} >
+                            <button type="button" className="cursor-pointer rounded-2xl border border-[#ece7dc] bg-white px-6 py-4 text-[17px] font-semibold text-[#241c15] transition hover:bg-[#faf8f3] active:scale-[0.97]" onClick={()=>setShowForm(false)} >
                                 Cancel
                             </button>
-                            <button type="button" className="rounded-2xl bg-[#f9bdad] px-5 py-4 text-[17px] font-bold text-white transition hover:bg-[#f6ad99] group-has-[#t-card:checked]:bg-orange-600 group-has-[#t-card:checked]:hover:bg-orange-700" onClick={()=>setShowSuccessForm(true)} > Complete sale </button>
+                            <button type="button" className="cursor-pointer rounded-2xl border-0 bg-[#f9bdad] px-5 py-4 text-[17px] font-bold text-white transition hover:bg-[#f6ad99] active:scale-[0.97] group-has-[#t-card:checked]:bg-orange-600 group-has-[#t-card:checked]:hover:bg-orange-700" onClick={()=>setShowSuccessForm(true)} > Complete sale </button>
                             <PaymentSuccessPopUp showSuccessForm={showSuccessForm} setShowSuccessForm={setShowSuccessForm} setShowForm={setShowForm} total={total} dineMode={dineMode} onClearOrder={onClearOrder} choosedProduct={choosedProduct} orderNo={orderNo} handleOrderId={handleOrderId} paymentMethod={paymentMethod}/>
                         </div>
                     </section>
