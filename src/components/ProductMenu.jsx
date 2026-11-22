@@ -1,5 +1,7 @@
 function ProductMenu({ product, onChooseProduct, subTotalProductsPrice, searched }) {
+
   const searchTerm = searched.trim().toLowerCase();
+  
   const filteredProducts = product.filter(item =>
     [item.productName, item.category, item.description]
       .some(value => value?.toLowerCase().includes(searchTerm))
