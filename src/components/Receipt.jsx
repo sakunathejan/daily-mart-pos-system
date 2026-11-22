@@ -1,11 +1,12 @@
 import { useState } from "react";
 import ChargePopUp from "./ChargePopUp";
 
-function Receipt({ choosedProduct, subTotal }) {
+function Receipt({ choosedProduct, subTotal, onClearOrder }) {
   const tax = Number(subTotal) * 0.08;
   const total = Number(subTotal + tax);
 
   const [showForm, setShowForm] = useState(false);
+  
 
   return (
     <div className="h-fit w-full rounded-2xl border border-stone-200 bg-white p-5 shadow-sm lg:sticky lg:top-6">
@@ -17,6 +18,7 @@ function Receipt({ choosedProduct, subTotal }) {
         <button
           type="button"
           className="rounded-lg border border-stone-200 px-3 py-2 text-sm font-medium text-stone-500 transition hover:border-red-200 hover:bg-red-50 hover:text-red-600"
+          onClick={onClearOrder}
         >
           Clear
         </button>

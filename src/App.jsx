@@ -19,6 +19,11 @@ function App() {
     setSubTotal(s => s + Number(price));
   }
 
+  function handleClearOrder() {
+    setChoosedProduct([]);
+    setSubTotal(0);
+  }
+
   return (
     <main className="min-h-screen bg-stone-100 p-4 sm:p-6">
       <div className="mx-auto grid max-w-screen-2xl grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_320px] xl:grid-cols-[minmax(0,1fr)_360px]">
@@ -28,7 +33,11 @@ function App() {
         </div>
 
 
-        <Receipt choosedProduct={choosedProduct} subTotal={subTotal} />
+        <Receipt
+          choosedProduct={choosedProduct}
+          subTotal={subTotal}
+          onClearOrder={handleClearOrder}
+        />
       </div>
 
       {/* <PaymentSuccessPopUp /> */}
