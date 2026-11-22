@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PaymentSuccessPopUp from "./PaymentSuccessPopUp";
+import { toast } from "sonner";
 
 function ChargePopUp({showForm, setShowForm, total, dineMode, onClearOrder, choosedProduct, orderNo, handleOrderId}) {
 
@@ -11,6 +12,17 @@ function ChargePopUp({showForm, setShowForm, total, dineMode, onClearOrder, choo
 
     function handlePayment(event){
         setAmount(event.target.value);
+    }
+
+    function handleCompleteSale() {
+        if (paymentMethod === "Cash" && amount.trim() === "") {
+            toast.warning("Enter the amount received before completing the sale.");
+            return;
+        }
+
+        
+        setShowSuccessForm(true);
+        
     }
 
     return (
@@ -67,11 +79,10 @@ function ChargePopUp({showForm, setShowForm, total, dineMode, onClearOrder, choo
                             <button type="button" className="cursor-pointer rounded-2xl border border-[#ece7dc] bg-white px-6 py-4 text-[17px] font-semibold text-[#241c15] transition hover:bg-[#faf8f3] active:scale-[0.97]" onClick={()=>setShowForm(false)} >
                                 Cancel
                             </button>
-                            <button type="button" className="cursor-pointer rounded-2xl border-0 bg-[#f9bdad] px-5 py-4 text-[17px] font-bold text-white transition hover:bg-[#f6ad99] active:scale-[0.97] group-has-[#t-card:checked]:bg-orange-600 group-has-[#t-card:checked]:hover:bg-orange-700" onClick={()=>setShowSuccessForm(true)} > Complete sale </button>
+                            <button type="button" className="cursor-pointer rounded-2xl border-0 bg-[#f9bdad] px-5 py-4 text-[17px] font-bold text-white transition hover:bg-[#f6ad99] active:scale-[0.97] group-has-[#t-card:checked]:bg-orange-600 group-has-[#t-card:checked]:hover:bg-orange-700" onClick={handleCompleteSale}> Complete sale </button>
                             <PaymentSuccessPopUp showSuccessForm={showSuccessForm} setShowSuccessForm={setShowSuccessForm} setShowForm={setShowForm} total={total} dineMode={dineMode} onClearOrder={onClearOrder} choosedProduct={choosedProduct} orderNo={orderNo} handleOrderId={handleOrderId} paymentMethod={paymentMethod}/>
                         </div>
                     </section>
-                    
                 </div>
             )}
         </>

@@ -2,8 +2,7 @@ import NavBar from "./components/NavBar";
 import Receipt from "./components/Receipt";
 import AddProduct from "./components/AddProduct";
 import { useState } from "react";
-import ChargePopUp from "./components/ChargePopUp";
-import PaymentSuccessPopUp from "./components/PaymentSuccessPopUp";
+
 
 function App() {
 
