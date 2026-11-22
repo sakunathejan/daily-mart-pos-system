@@ -1,3 +1,5 @@
+import ThemeSwitch from "./ThemeSwitch";
+
 function NavBar({ search, onSearch }) {
   return (
     <header className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
@@ -12,16 +14,19 @@ function NavBar({ search, onSearch }) {
         </div>
       </div>
 
-      <label className="block w-full sm:max-w-sm">
-        <span className="sr-only">Search the menu</span>
-        <input
-          type="search"
-          placeholder="Search the menu"
-          value={search}
-          onChange={(event) => onSearch(event.target.value)}
-          className="w-full rounded-full border border-stone-300 bg-white px-4 py-3 text-stone-900 placeholder:text-stone-400 transition-colors duration-200 hover:border-stone-400 focus:border-orange-400 focus:outline-none focus:ring-4 focus:ring-orange-100"
-        />
-      </label>
+      <div className="flex w-full items-center gap-3 sm:w-auto">
+        <label className="block min-w-0 flex-1 sm:w-80">
+          <span className="sr-only">Search the menu</span>
+          <input
+            type="search"
+            placeholder="Search the menu"
+            value={search}
+            onChange={(event) => onSearch(event.target.value)}
+            className="w-full rounded-full border border-stone-300 bg-white px-4 py-3 text-stone-900 placeholder:text-stone-400 transition-colors duration-200 hover:border-stone-400 focus:border-orange-400 focus:outline-none focus:ring-4 focus:ring-orange-100"
+          />
+        </label>
+        <ThemeSwitch />
+      </div>
     </header>
   );
 }

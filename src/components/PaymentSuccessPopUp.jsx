@@ -31,16 +31,22 @@ function PaymentSuccessPopUp({ showSuccessForm, setShowSuccessForm, total, setSh
                         >
                             {`Rs. ${total}`}
                         </h2>
+                        {orderNo !== "" && orderNo < 10 ? (
+                            <p className="mt-5 text-[17px] text-[#241c15]">
+                                Order #00{orderNo} · {dineMode} · {paymentMethod}
+                            </p>
+                        ) : (
+                            <p className="mt-5 text-[17px] text-[#241c15]">
+                                Order #{orderNo} · {dineMode} · {paymentMethod}
+                            </p>
+                        )}
 
-                        <p className="mt-5 text-[17px] text-[#241c15]">
-                            Order #{orderNo} · {dineMode} · {paymentMethod}
-                        </p>
 
                         <p className="mt-4 text-[17px] text-[#8a8478]">
                             {choosedProduct.length} item sold. Receipt sent to the printer.
                         </p>
 
-                        <button type="button" className="mt-6 w-full cursor-pointer rounded-2xl border-0 bg-[#f25c2e] px-5 py-[18px] text-[17px] font-bold text-white transition-colors duration-200 hover:bg-[#e04f22] hover:shadow-lg active:scale-[0.97] focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-200" onClick={()=>{setShowSuccessForm(false); setShowForm(false); onClearOrder(false); handleOrderId()}}>Start new order</button>
+                        <button type="button" className="mt-6 w-full cursor-pointer rounded-2xl border-0 bg-[#f25c2e] px-5 py-[18px] text-[17px] font-bold text-white transition-colors duration-200 hover:bg-[#e04f22] hover:shadow-lg active:scale-[0.97] focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-200" onClick={() => { setShowSuccessForm(false); setShowForm(false); onClearOrder(false); handleOrderId() }}>Start new order</button>
                     </section>
                 </div>
             )}
