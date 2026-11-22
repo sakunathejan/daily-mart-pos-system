@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ProductMenu from "./ProductMenu";
+import { toast } from "sonner";
 
 function AddProduct({ onChooseProduct, subTotalProductsPrice, searched }) {
     const [productName, setProductName] = useState("");
@@ -55,16 +56,32 @@ function AddProduct({ onChooseProduct, subTotalProductsPrice, searched }) {
 
             setImage(URL.createObjectURL(file));
         }
-
-
-
     }
 
     function addProduct() {
         const updateProduct = { productName: productName, category: category, description: description, price: price, image: image }
         setProduct(p => ([...p, updateProduct]));
-        console.log(product.image)
+        setProductName("")
+        setCategory("")
+        setDescription("")
+        setPrice("")
+        setImage(URL.createObjectURL(""))
 
+    }
+
+    function handleFormValidation() {
+        const convertedNo = Number(price);        
+        
+        if (productName === "" || category === "" || price === "") {
+            toast.warning("Field cannot be blank");
+            return;
+
+        }else if(Number.isNaN(convertedNo)){
+            toast.warning("Price can only be numbers");
+            return;
+        }
+
+        addProduct()
     }
 
 
@@ -116,12 +133,12 @@ function AddProduct({ onChooseProduct, subTotalProductsPrice, searched }) {
                                 />
                             </label>
 
-                            <button type="button" className="mt-2 h-11 w-full cursor-pointer rounded-xl border-0 bg-orange-500 font-semibold text-white transition-colors duration-200 hover:bg-orange-600 hover:shadow-md active:scale-[0.97]" onClick={addProduct}>Add Product</button>
+                            <button type="button" className="mt-2 h-11 w-full cursor-pointer rounded-xl border-0 bg-orange-500 font-semibold text-white transition-colors duration-200 hover:bg-orange-600 hover:shadow-md active:scale-[0.97]" onClick={handleFormValidation}>Add Product</button>
                         </div>
                     </div>
                 </div>
             )}
-            <ProductMenu product={product} onChooseProduct={onChooseProduct} subTotalProductsPrice={subTotalProductsPrice} searched={searched}/>
+            <ProductMenu product={product} onChooseProduct={onChooseProduct} subTotalProductsPrice={subTotalProductsPrice} searched={searched} />
             <button
                 type="button"
                 aria-label="Add product"
