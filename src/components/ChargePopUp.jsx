@@ -18,9 +18,12 @@ function ChargePopUp({showForm, setShowForm, total, dineMode, onClearOrder, choo
         if (paymentMethod === "Cash" && amount.trim() === "") {
             toast.warning("Enter the amount received before completing the sale.");
             return;
+        }else if(paymentMethod === "Cash" && change < 0){            
+            toast.warning("Balance cant be less than the total");
+            return;
         }
-
         
+        setAmount("")
         setShowSuccessForm(true);
         
     }
