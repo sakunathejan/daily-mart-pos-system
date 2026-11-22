@@ -1,8 +1,9 @@
 import { useState } from "react";
+import PaymentSuccessPopUp from "./PaymentSuccessPopUp";
 
 function ChargePopUp({showForm, setShowForm}) {
 
-    
+    const [showSuccessForm, setShowSuccessForm] = useState(false);
 
     return (
         <>
@@ -58,11 +59,11 @@ function ChargePopUp({showForm, setShowForm}) {
                             <button type="button" className="rounded-2xl border border-[#ece7dc] bg-white px-6 py-4 text-[17px] font-semibold text-[#241c15] transition hover:bg-[#faf8f3]" onClick={()=>setShowForm(false)} >
                                 Cancel
                             </button>
-                            <button type="button" className="rounded-2xl bg-[#f9bdad] px-5 py-4 text-[17px] font-bold text-white transition hover:bg-[#f6ad99] group-has-[#t-card:checked]:bg-orange-600 group-has-[#t-card:checked]:hover:bg-orange-700" >
-                                Complete sale
-                            </button>
+                            <button type="button" className="rounded-2xl bg-[#f9bdad] px-5 py-4 text-[17px] font-bold text-white transition hover:bg-[#f6ad99] group-has-[#t-card:checked]:bg-orange-600 group-has-[#t-card:checked]:hover:bg-orange-700" onClick={()=>setShowSuccessForm(true)} > Complete sale </button>
+                            <PaymentSuccessPopUp showSuccessForm={showSuccessForm} setShowSuccessForm={setShowSuccessForm}/>
                         </div>
                     </section>
+                    
                 </div>
             )}
         </>

@@ -31,7 +31,7 @@ function App() {
         <Receipt choosedProduct={choosedProduct} subTotal={subTotal} />
       </div>
 
-      <PaymentSuccessPopUp />
+      {/* <PaymentSuccessPopUp /> */}
     </main>
   );
 }
