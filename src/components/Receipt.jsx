@@ -6,8 +6,12 @@ function Receipt({ choosedProduct, subTotal, onClearOrder }) {
   const total = Number(subTotal + tax);
 
   const [showForm, setShowForm] = useState(false);
+  const [dineMode, setdineMode] = useState("Dine In");
+  const [orderNo, setOrderNo] = useState("1");
 
-  const [dineMode, setdineMode] = useState("Dine In")
+  function handleOrderId(){
+    setOrderNo(o=>(Number(o)+1));
+  }
   
 
   return (
@@ -15,7 +19,12 @@ function Receipt({ choosedProduct, subTotal, onClearOrder }) {
       <header className="flex items-start justify-between gap-3">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-stone-400">Order summary</p>
-          <h1 className="mt-1 text-2xl font-bold tracking-tight text-stone-900">Order #208</h1>
+          {orderNo !== "" && orderNo < 10 ? (
+            <h1 className="mt-1 text-2xl font-bold tracking-tight text-stone-900">Order #00{orderNo}</h1>
+            ):(
+              <h1 className="mt-1 text-2xl font-bold tracking-tight text-stone-900">Order #{orderNo}</h1>
+            )}
+          {/* <h1 className="mt-1 text-2xl font-bold tracking-tight text-stone-900">Order #{orderNo}</h1> */}
         </div>
         <button
           type="button"
@@ -91,7 +100,7 @@ function Receipt({ choosedProduct, subTotal, onClearOrder }) {
       </div>
 
       <button type="button" className="mt-5 w-full rounded-xl bg-orange-500 px-4 py-3 font-semibold text-white opacity-50" onClick={()=> setShowForm(true)} > Charge </button>
-      <ChargePopUp showForm = {showForm} setShowForm = {setShowForm} total={total} dineMode={dineMode} onClearOrder={onClearOrder}/>
+      <ChargePopUp showForm = {showForm} setShowForm = {setShowForm} total={total} dineMode={dineMode} onClearOrder={onClearOrder} choosedProduct={choosedProduct} orderNo={orderNo} handleOrderId={handleOrderId}/>
     </div>
 
     

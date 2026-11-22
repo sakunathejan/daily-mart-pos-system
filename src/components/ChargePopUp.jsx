@@ -1,10 +1,11 @@
 import { useState } from "react";
 import PaymentSuccessPopUp from "./PaymentSuccessPopUp";
 
-function ChargePopUp({showForm, setShowForm, total, dineMode, onClearOrder}) {
+function ChargePopUp({showForm, setShowForm, total, dineMode, onClearOrder, choosedProduct, orderNo, handleOrderId}) {
 
     const [showSuccessForm, setShowSuccessForm] = useState(false);
     const [amount, setAmount] = useState("");
+    const [paymentMethod, setPaymentMethod] = useState("Cash");
     
     const change = Number(amount) - Number(total);
 
@@ -24,8 +25,8 @@ function ChargePopUp({showForm, setShowForm, total, dineMode, onClearOrder}) {
 
                         {/* Cash / Card toggle */}
                         <div className="mt-8 grid grid-cols-2 rounded-[18px] border border-[#ece7dc] bg-[#f6f3ec] p-[5px]">
-                            <input type="radio" name="payment-method" id="t-cash" className="sr-only" defaultChecked />
-                            <input type="radio" name="payment-method" id="t-card" className="sr-only" />
+                            <input type="radio" name="payment-method" id="t-cash" className="sr-only" defaultChecked onChange={() => setPaymentMethod("Cash")} />
+                            <input type="radio" name="payment-method" id="t-card" className="sr-only" onChange={() => setPaymentMethod("Card")} />
                             <label htmlFor="t-cash" className="cursor-pointer rounded-[14px] py-3.5 text-center text-[17px] font-medium text-[#8a8478] transition group-has-[#t-cash:checked]:bg-white group-has-[#t-cash:checked]:text-[#241c15] group-has-[#t-cash:checked]:shadow-[0_1px_3px_rgba(36,28,21,0.15)]" >
                                 Cash
                             </label>
@@ -37,10 +38,10 @@ function ChargePopUp({showForm, setShowForm, total, dineMode, onClearOrder}) {
                         {/* Cash panel */}
                         <div className="group-has-[#t-card:checked]:hidden">
                             <div className="mt-4 flex gap-2.5">
-                                <button type="button" className="rounded-xl border border-[#ece7dc] bg-[#f6f3ec] px-4 py-2.5 text-[17px] font-semibold text-[#241c15] transition hover:bg-[#efeadf]" >
+                                <button type="button" className="rounded-xl border border-[#ece7dc] bg-[#f6f3ec] px-4 py-2.5 text-[17px] font-semibold text-[#241c15] transition hover:bg-[#efeadf]" onClick={() => setAmount(String(total))}>
                                     Exact
                                 </button>
-                                <button type="button" className="rounded-xl border border-[#ece7dc] bg-[#f6f3ec] px-4 py-2.5 text-[17px] font-semibold text-[#241c15] transition hover:bg-[#efeadf]" >
+                                <button type="button" className="rounded-xl border border-[#ece7dc] bg-[#f6f3ec] px-4 py-2.5 text-[17px] font-semibold text-[#241c15] transition hover:bg-[#efeadf]" onClick={() => setAmount("50")}>
                                     $50
                                 </button>
                             </div>
@@ -67,7 +68,7 @@ function ChargePopUp({showForm, setShowForm, total, dineMode, onClearOrder}) {
                                 Cancel
                             </button>
                             <button type="button" className="rounded-2xl bg-[#f9bdad] px-5 py-4 text-[17px] font-bold text-white transition hover:bg-[#f6ad99] group-has-[#t-card:checked]:bg-orange-600 group-has-[#t-card:checked]:hover:bg-orange-700" onClick={()=>setShowSuccessForm(true)} > Complete sale </button>
-                            <PaymentSuccessPopUp showSuccessForm={showSuccessForm} setShowSuccessForm={setShowSuccessForm} setShowForm={setShowForm} total={total} dineMode={dineMode} onClearOrder={onClearOrder}/>
+                            <PaymentSuccessPopUp showSuccessForm={showSuccessForm} setShowSuccessForm={setShowSuccessForm} setShowForm={setShowForm} total={total} dineMode={dineMode} onClearOrder={onClearOrder} choosedProduct={choosedProduct} orderNo={orderNo} handleOrderId={handleOrderId} paymentMethod={paymentMethod}/>
                         </div>
                     </section>
                     
