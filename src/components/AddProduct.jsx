@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ProductMenu from "./ProductMenu";
 
-function AddProduct({ onChooseProduct, subTotalProductsPrice }) {
+function AddProduct({ onChooseProduct, subTotalProductsPrice, searched }) {
     const [productName, setProductName] = useState("");
     const [category, setCategory] = useState("");
     const [description, setDescription] = useState("");
@@ -71,8 +71,8 @@ function AddProduct({ onChooseProduct, subTotalProductsPrice }) {
     return (
         <>
             {showForm && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-stone-900/30 p-4" id="addProductForm">
-                    <div className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl">
+                <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-stone-900/30 p-4" id="addProductForm">
+                    <div className="my-auto max-h-[calc(100vh-2rem)] w-full max-w-md overflow-y-auto rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl sm:p-6">
                         <div className="mb-5 flex items-center justify-between">
                             <h1 className="text-xl font-bold text-stone-900">Add Product</h1>
                             <button
@@ -121,11 +121,11 @@ function AddProduct({ onChooseProduct, subTotalProductsPrice }) {
                     </div>
                 </div>
             )}
-            <ProductMenu product={product} onChooseProduct={onChooseProduct} subTotalProductsPrice={subTotalProductsPrice} />
+            <ProductMenu product={product} onChooseProduct={onChooseProduct} subTotalProductsPrice={subTotalProductsPrice} searched={searched}/>
             <button
                 type="button"
                 aria-label="Add product"
-                className="fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-orange-500 text-2xl text-white shadow-lg sm:bottom-8 sm:right-8"
+                className="fixed bottom-4 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-orange-500 text-2xl text-white shadow-lg sm:bottom-6 sm:right-6"
                 onClick={() => setShowForm(true)}
             >
                 +

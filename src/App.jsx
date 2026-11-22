@@ -9,6 +9,7 @@ function App() {
 
   const [choosedProduct, setChoosedProduct] = useState([]);
   const [subTotal, setSubTotal] = useState(0.00);
+  const [search, setSearch] = useState("");
 
   function handleChoosedProduct(product) {
     setChoosedProduct(c => [...c, product]);
@@ -24,12 +25,16 @@ function App() {
     setSubTotal(0);
   }
 
+  function handleSearch(value) {
+    setSearch(value);
+  }
+
   return (
     <main className="min-h-screen bg-stone-100 p-4 sm:p-6">
       <div className="mx-auto grid max-w-screen-2xl grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_320px] xl:grid-cols-[minmax(0,1fr)_360px]">
         <div className="min-w-0">
-          <NavBar />
-          <AddProduct onChooseProduct={handleChoosedProduct} subTotalProductsPrice={handleSubTotal} />
+          <NavBar search={search} onSearch={handleSearch}/>
+          <AddProduct onChooseProduct={handleChoosedProduct} subTotalProductsPrice={handleSubTotal} searched={search}/>
         </div>
 
 

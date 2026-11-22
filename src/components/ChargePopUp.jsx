@@ -17,7 +17,7 @@ function ChargePopUp({showForm, setShowForm, total, dineMode, onClearOrder, choo
         <>
             {showForm && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-stone-950/40 p-3 backdrop-blur-[2px] sm:p-5">
-                    <section role="dialog" aria-modal="true" aria-labelledby="payment-title" className="group my-auto w-full max-w-[560px] rounded-[28px] bg-white p-7 shadow-[0_24px_80px_-20px_rgba(36,28,21,0.5)]" >
+                    <section role="dialog" aria-modal="true" aria-labelledby="payment-title" className="group my-auto w-full max-w-[560px] rounded-[28px] bg-white p-5 shadow-[0_24px_80px_-20px_rgba(36,28,21,0.5)] sm:p-7" >
                         <h2 id="payment-title" className="text-2xl font-bold tracking-tight text-[#241c15]" >
                             Take payment
                         </h2>
@@ -46,7 +46,7 @@ function ChargePopUp({showForm, setShowForm, total, dineMode, onClearOrder, choo
                                 </button>
                             </div>
 
-                            <input id="cash-received" type="text" inputMode="decimal" autoComplete="off" value={amount} placeholder="Cash received" className="mt-4 h-[70px] w-130 rounded-2xl border border-[#ece7dc] bg-[#f6f3ec] px-5 text-[28px] text-[#241c15] outline-none placeholder:text-[#77726a] focus:border-orange-400 focus:ring-4 focus:ring-orange-100" onChange={handlePayment} />
+                            <input id="cash-received" type="text" inputMode="decimal" autoComplete="off" value={amount} placeholder="Cash received" className="mt-4 h-[70px] w-full rounded-2xl border border-[#ece7dc] bg-[#f6f3ec] px-5 text-[28px] text-[#241c15] outline-none placeholder:text-[#77726a] focus:border-orange-400 focus:ring-4 focus:ring-orange-100" onChange={handlePayment} />
                             { amount !== "" && Number(amount) >= Number(total)? (
                                 <p>Change due: {change.toFixed(2)}</p>
                             ):<p>Change owed: {change.toFixed(2)}</p>}

@@ -1,6 +1,9 @@
-function ProductMenu({ product, onChooseProduct, subTotalProductsPrice }) {
-
-  const imageUrl = ``;
+function ProductMenu({ product, onChooseProduct, subTotalProductsPrice, searched }) {
+  const searchTerm = searched.trim().toLowerCase();
+  const filteredProducts = product.filter(item =>
+    [item.productName, item.category, item.description]
+      .some(value => value?.toLowerCase().includes(searchTerm))
+  );
 
   return (
     <section className="mt-6">
@@ -11,9 +14,12 @@ function ProductMenu({ product, onChooseProduct, subTotalProductsPrice }) {
         <button type="button" className="shrink-0 rounded-full border border-stone-200 bg-white px-5 py-2.5 text-sm">Bakery</button>
         <button type="button" className="shrink-0 rounded-full border border-stone-200 bg-white px-5 py-2.5 text-sm">Kitchen</button>
       </nav>
-
-      <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-        {product.map((item, index) => (
+      <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+        {filteredProducts.length === 0 ? (
+          <p className="col-span-full rounded-xl border border-dashed border-stone-200 px-4 py-8 text-center text-sm text-stone-500">
+            No products found.
+          </p>
+        ) : filteredProducts.map((item, index) => (
           
           <article key={index} className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
             {item.image? item.image && (

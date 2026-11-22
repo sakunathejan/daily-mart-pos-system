@@ -7,7 +7,7 @@ function PaymentSuccessPopUp({ showSuccessForm, setShowSuccessForm, total, setSh
                         role="dialog"
                         aria-modal="true"
                         aria-labelledby="success-title"
-                        className="my-auto w-full max-w-[560px] rounded-[28px] bg-white p-6 text-center shadow-[0_24px_80px_-20px_rgba(36,28,21,0.5)]"
+                        className="my-auto w-full max-w-[560px] rounded-[28px] bg-white p-5 text-center shadow-[0_24px_80px_-20px_rgba(36,28,21,0.5)] sm:p-6"
                     >
                         {/* Check badge */}
                         <div className="mx-auto flex h-[85px] w-[85px] items-center justify-center rounded-full bg-[#2fa06b]">

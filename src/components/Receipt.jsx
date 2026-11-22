@@ -15,7 +15,7 @@ function Receipt({ choosedProduct, subTotal, onClearOrder }) {
   
 
   return (
-    <div className="h-fit w-full rounded-2xl border border-stone-200 bg-white p-5 shadow-sm lg:sticky lg:top-6">
+    <div className="h-fit min-w-0 w-full rounded-2xl border border-stone-200 bg-white p-5 shadow-sm lg:sticky lg:top-6">
       <header className="flex items-start justify-between gap-3">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-stone-400">Order summary</p>
@@ -35,10 +35,14 @@ function Receipt({ choosedProduct, subTotal, onClearOrder }) {
         </button>
       </header>
 
-      <div className="mt-5 grid grid-cols-2 rounded-xl bg-stone-100 p-1">
+      <div className="mt-5 grid grid-cols-2 gap-1 rounded-xl border border-stone-200/70 bg-stone-100 p-1">
         <button
           type="button"
-          className="rounded-lg bg-white py-2.5 text-sm font-semibold text-stone-900 shadow-sm"
+          className={`rounded-lg border border-stone-200/70 py-3 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-1 ${
+            dineMode === "Dine In"
+              ? "bg-white text-stone-900 shadow-sm ring-1 ring-stone-200/70"
+              : "text-stone-500 hover:bg-white/70 hover:text-stone-800"
+          }`}
           onClick={()=> setdineMode("Dine In")}
         >
           Dine in
@@ -46,7 +50,11 @@ function Receipt({ choosedProduct, subTotal, onClearOrder }) {
 
         <button
           type="button"
-          className="rounded-lg py-2.5 text-sm font-medium text-stone-500"
+          className={`rounded-lg border border-stone-200/70 py-3 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-1 ${
+            dineMode === "Takeaway"
+              ? "bg-white text-stone-900 shadow-sm ring-1 ring-stone-200/70"
+              : "text-stone-500 hover:bg-white/70 hover:text-stone-800"
+          }`}
           onClick={()=> setdineMode("Takeaway")}
         >
           Takeaway
