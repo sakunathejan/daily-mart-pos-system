@@ -1,4 +1,4 @@
-function PaymentSuccessPopUp({ showSuccessForm, setShowSuccessForm }) {
+function PaymentSuccessPopUp({ showSuccessForm, setShowSuccessForm, total }) {
     return (
         <>
             {showSuccessForm && (
@@ -29,7 +29,7 @@ function PaymentSuccessPopUp({ showSuccessForm, setShowSuccessForm }) {
                             id="success-title"
                             className="mt-5 text-[26px] font-bold tracking-tight text-[#241c15]"
                         >
-                            Paid $4.54
+                            {`Rs. ${total}`}
                         </h2>
 
                         <p className="mt-5 text-[17px] text-[#241c15]">

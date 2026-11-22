@@ -84,7 +84,7 @@ function Receipt({ choosedProduct, subTotal }) {
       </div>
 
       <button type="button" className="mt-5 w-full rounded-xl bg-orange-500 px-4 py-3 font-semibold text-white opacity-50" onClick={()=> setShowForm(true)} > Charge </button>
-      <ChargePopUp showForm = {showForm} setShowForm = {setShowForm}/>
+      <ChargePopUp showForm = {showForm} setShowForm = {setShowForm} total={total}/>
     </div>
 
     

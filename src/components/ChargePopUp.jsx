@@ -1,9 +1,16 @@
 import { useState } from "react";
 import PaymentSuccessPopUp from "./PaymentSuccessPopUp";
 
-function ChargePopUp({showForm, setShowForm}) {
+function ChargePopUp({showForm, setShowForm, total}) {
 
     const [showSuccessForm, setShowSuccessForm] = useState(false);
+    const [amount, setAmount] = useState("");
+    
+    const change = Number(amount) - Number(total);
+
+    function handlePayment(event){
+        setAmount(event.target.value);
+    }
 
     return (
         <>
@@ -13,7 +20,7 @@ function ChargePopUp({showForm, setShowForm}) {
                         <h2 id="payment-title" className="text-2xl font-bold tracking-tight text-[#241c15]" >
                             Take payment
                         </h2>
-                        <p className="mt-4 text-[52px] font-extrabold leading-none tracking-tight text-[#241c15]"> $20.52 </p>
+                        <p className="mt-4 text-[52px] font-extrabold leading-none tracking-tight text-[#241c15]">{`Rs. ${total}`}</p>
 
                         {/* Cash / Card toggle */}
                         <div className="mt-8 grid grid-cols-2 rounded-[18px] border border-[#ece7dc] bg-[#f6f3ec] p-[5px]">
@@ -38,10 +45,10 @@ function ChargePopUp({showForm, setShowForm}) {
                                 </button>
                             </div>
 
-                            <label htmlFor="cash-received" className="sr-only">
-                                Cash received
-                            </label>
-                            <input id="cash-received" type="text" inputMode="decimal" autoComplete="off" placeholder="Cash received" className="mt-4 h-[70px] w-130 rounded-2xl border border-[#ece7dc] bg-[#f6f3ec] px-5 text-[28px] text-[#241c15] outline-none placeholder:text-[#77726a] focus:border-orange-400 focus:ring-4 focus:ring-orange-100" />
+                            <input id="cash-received" type="text" inputMode="decimal" autoComplete="off" value={amount} placeholder="Cash received" className="mt-4 h-[70px] w-130 rounded-2xl border border-[#ece7dc] bg-[#f6f3ec] px-5 text-[28px] text-[#241c15] outline-none placeholder:text-[#77726a] focus:border-orange-400 focus:ring-4 focus:ring-orange-100" onChange={handlePayment} />
+                            { amount !== "" && Number(amount) >= Number(total)? (
+                                <p>Change due: {change.toFixed(2)}</p>
+                            ):<p>Change owed: {change.toFixed(2)}</p>}
                             <p className="mt-4 text-[17px] text-[#3b332b]">
                                 Enter the amount received.
                             </p>
@@ -60,7 +67,7 @@ function ChargePopUp({showForm, setShowForm}) {
                                 Cancel
                             </button>
                             <button type="button" className="rounded-2xl bg-[#f9bdad] px-5 py-4 text-[17px] font-bold text-white transition hover:bg-[#f6ad99] group-has-[#t-card:checked]:bg-orange-600 group-has-[#t-card:checked]:hover:bg-orange-700" onClick={()=>setShowSuccessForm(true)} > Complete sale </button>
-                            <PaymentSuccessPopUp showSuccessForm={showSuccessForm} setShowSuccessForm={setShowSuccessForm}/>
+                            <PaymentSuccessPopUp showSuccessForm={showSuccessForm} setShowSuccessForm={setShowSuccessForm} total={total}/>
                         </div>
                     </section>
                     
