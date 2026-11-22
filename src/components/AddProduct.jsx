@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ProductMenu from "./ProductMenu";
 
-function AddProduct({onChooseProduct, subTotalProductsPrice}) {
+function AddProduct({ onChooseProduct, subTotalProductsPrice }) {
     const [productName, setProductName] = useState("");
     const [category, setCategory] = useState("");
     const [description, setDescription] = useState("");
@@ -9,42 +9,64 @@ function AddProduct({onChooseProduct, subTotalProductsPrice}) {
     const [image, setImage] = useState(null);
     const [showForm, setShowForm] = useState(false);
 
-    const [product, setProduct] = useState([]);
+    const [product, setProduct] = useState([
+        {
+            productName: "Milk",
+            category: "Diary",
+            description: "This is milk",
+            price: 1500,
+            image: ""
+        },
+        {
+            productName: "Yogurt",
+            category: "Dairy",
+            description: "Fresh creamy yogurt",
+            price: 450,
+            image: ""
+        },
+        {
+            productName: "Cheese",
+            category: "Dairy",
+            description: "Rich cheddar cheese",
+            price: 1200,
+            image: ""
+        },
+    ]);
 
-    function handleProductName(event){
+    function handleProductName(event) {
         setProductName(event.target.value);
     }
 
-    function handleCategory(event){
+    function handleCategory(event) {
         setCategory(event.target.value);
     }
 
-    function handleDescription(event){
+    function handleDescription(event) {
         setDescription(event.target.value);
     }
 
-    function handlePrice(event){
+    function handlePrice(event) {
         setPrice(event.target.value);
     }
 
-    function handleImage(event){
-        if(event.target.files && event.target.files[0]){
+    function handleImage(event) {
+        if (event.target.files && event.target.files[0]) {
             const file = event.target.files[0];
 
             setImage(URL.createObjectURL(file));
         }
 
-        
-        
+
+
     }
 
-    function addProduct(){
-        const updateProduct = {productName: productName , category: category, description:description,price:price, image:image}
+    function addProduct() {
+        const updateProduct = { productName: productName, category: category, description: description, price: price, image: image }
         setProduct(p => ([...p, updateProduct]));
         console.log(product.image)
-    
+
     }
-    
+
 
     return (
         <>
@@ -76,12 +98,12 @@ function AddProduct({onChooseProduct, subTotalProductsPrice}) {
 
                             <label className="block text-sm font-medium text-stone-700">
                                 Description
-                                <input type="text" name="input" value={description} className="mt-1 h-11 w-full rounded-lg border border-slate-300 px-3" onChange={handleDescription}/>
+                                <input type="text" name="input" value={description} className="mt-1 h-11 w-full rounded-lg border border-slate-300 px-3" onChange={handleDescription} />
                             </label>
 
                             <label className="block text-sm font-medium text-stone-700">
                                 Price
-                                <input type="text" name="input" value={price} className="mt-1 h-11 w-full rounded-lg border border-slate-300 px-3" onChange={handlePrice}/>
+                                <input type="text" name="input" value={price} className="mt-1 h-11 w-full rounded-lg border border-slate-300 px-3" onChange={handlePrice} />
                             </label>
 
                             <label className="block text-sm font-medium text-stone-700">
@@ -99,7 +121,7 @@ function AddProduct({onChooseProduct, subTotalProductsPrice}) {
                     </div>
                 </div>
             )}
-            <ProductMenu product={product} onChooseProduct ={onChooseProduct} subTotalProductsPrice={subTotalProductsPrice}/>
+            <ProductMenu product={product} onChooseProduct={onChooseProduct} subTotalProductsPrice={subTotalProductsPrice} />
             <button
                 type="button"
                 aria-label="Add product"

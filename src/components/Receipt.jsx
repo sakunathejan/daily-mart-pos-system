@@ -6,6 +6,8 @@ function Receipt({ choosedProduct, subTotal, onClearOrder }) {
   const total = Number(subTotal + tax);
 
   const [showForm, setShowForm] = useState(false);
+
+  const [dineMode, setdineMode] = useState("Dine In")
   
 
   return (
@@ -28,12 +30,15 @@ function Receipt({ choosedProduct, subTotal, onClearOrder }) {
         <button
           type="button"
           className="rounded-lg bg-white py-2.5 text-sm font-semibold text-stone-900 shadow-sm"
+          onClick={()=> setdineMode("Dine In")}
         >
           Dine in
         </button>
+
         <button
           type="button"
           className="rounded-lg py-2.5 text-sm font-medium text-stone-500"
+          onClick={()=> setdineMode("Takeaway")}
         >
           Takeaway
         </button>
@@ -86,7 +91,7 @@ function Receipt({ choosedProduct, subTotal, onClearOrder }) {
       </div>
 
       <button type="button" className="mt-5 w-full rounded-xl bg-orange-500 px-4 py-3 font-semibold text-white opacity-50" onClick={()=> setShowForm(true)} > Charge </button>
-      <ChargePopUp showForm = {showForm} setShowForm = {setShowForm} total={total}/>
+      <ChargePopUp showForm = {showForm} setShowForm = {setShowForm} total={total} dineMode={dineMode} onClearOrder={onClearOrder}/>
     </div>
 
     

@@ -1,4 +1,4 @@
-function PaymentSuccessPopUp({ showSuccessForm, setShowSuccessForm, total, setShowForm }) {
+function PaymentSuccessPopUp({ showSuccessForm, setShowSuccessForm, total, setShowForm, dineMode, onClearOrder }) {
     return (
         <>
             {showSuccessForm && (
@@ -33,14 +33,14 @@ function PaymentSuccessPopUp({ showSuccessForm, setShowSuccessForm, total, setSh
                         </h2>
 
                         <p className="mt-5 text-[17px] text-[#241c15]">
-                            Order #204 · Dine in · Cash
+                            Order #204 · {dineMode} · Cash
                         </p>
 
                         <p className="mt-4 text-[17px] text-[#8a8478]">
                             1 item sold. Receipt sent to the printer.
                         </p>
 
-                        <button type="button" className="mt-6 w-full rounded-2xl bg-[#f25c2e] px-5 py-[18px] text-[17px] font-bold text-white transition hover:bg-[#e04f22] focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-200" onClick={()=>{setShowSuccessForm(false); setShowForm(false)}}>Start new order</button>
+                        <button type="button" className="mt-6 w-full rounded-2xl bg-[#f25c2e] px-5 py-[18px] text-[17px] font-bold text-white transition hover:bg-[#e04f22] focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-200" onClick={()=>{setShowSuccessForm(false); setShowForm(false); onClearOrder(false)}}>Start new order</button>
                     </section>
                 </div>
             )}

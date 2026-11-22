@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PaymentSuccessPopUp from "./PaymentSuccessPopUp";
 
-function ChargePopUp({showForm, setShowForm, total}) {
+function ChargePopUp({showForm, setShowForm, total, dineMode, onClearOrder}) {
 
     const [showSuccessForm, setShowSuccessForm] = useState(false);
     const [amount, setAmount] = useState("");
@@ -67,7 +67,7 @@ function ChargePopUp({showForm, setShowForm, total}) {
                                 Cancel
                             </button>
                             <button type="button" className="rounded-2xl bg-[#f9bdad] px-5 py-4 text-[17px] font-bold text-white transition hover:bg-[#f6ad99] group-has-[#t-card:checked]:bg-orange-600 group-has-[#t-card:checked]:hover:bg-orange-700" onClick={()=>setShowSuccessForm(true)} > Complete sale </button>
-                            <PaymentSuccessPopUp showSuccessForm={showSuccessForm} setShowSuccessForm={setShowSuccessForm} setShowForm={setShowForm} total={total}/>
+                            <PaymentSuccessPopUp showSuccessForm={showSuccessForm} setShowSuccessForm={setShowSuccessForm} setShowForm={setShowForm} total={total} dineMode={dineMode} onClearOrder={onClearOrder}/>
                         </div>
                     </section>
                     

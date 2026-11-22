@@ -11,7 +11,7 @@ function App() {
   const [subTotal, setSubTotal] = useState(0.00);
 
   function handleChoosedProduct(product) {
-    setChoosedProduct(currentProducts => [...currentProducts, product]);
+    setChoosedProduct(c => [...c, product]);
   }
 
   function handleSubTotal(price) {
