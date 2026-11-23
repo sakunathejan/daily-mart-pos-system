@@ -1,4 +1,6 @@
-function OrderManagement({order}) {
+import { useState } from "react";
+// localStorage.clear();
+function OrderManagement({ order }) {
 
     const currentDate = new Date().toLocaleDateString('en-GB', {
         day: 'numeric',
@@ -7,9 +9,22 @@ function OrderManagement({order}) {
     });
 
     const currentTime = new Date().toLocaleTimeString();
-    
 
-    
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const ordersPerPage = 5;
+
+    const totalPages = Math.ceil(
+        order.length / ordersPerPage
+    );
+
+    const startIndex = (currentPage - 1) * ordersPerPage;
+
+    const currentOrders = order.slice(
+        startIndex,
+        startIndex + ordersPerPage
+    );
+
 
     return (
         <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
@@ -44,16 +59,26 @@ function OrderManagement({order}) {
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-stone-100 bg-white">
-                        {order.map((item, index) => (
+                        {currentOrders.length === 0 ? (
+                            <tr>
+                                <td colSpan="8" className="px-4 py-12 text-center">
+                                    <div className="mx-auto max-w-sm rounded-xl border border-dashed border-stone-200 px-4 py-8 text-center">
+                                        <p className="text-sm font-medium text-stone-600">No orders yet</p>
+                                        <p className="mt-1 text-xs text-stone-400">Add products to start an order.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        ) : (
+                            currentOrders.map((item, index) => (
 
-                            <tr className="transition-colors duration-150 hover:bg-stone-50/70">
+                            <tr key={item.orderNo || index} className="transition-colors duration-150 hover:bg-stone-50/70">
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    {Number(item.orderNo < 10 ) ? (
+                                    {Number(item.orderNo < 10) ? (
                                         <span className="font-semibold text-stone-900">#ORD - 00{item.orderNo}</span>
-                                    ):(
+                                    ) : (
                                         <span className="font-semibold text-stone-900">#ORD - {item.orderNo}</span>
                                     )}
-                                    
+
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <p className="font-medium text-stone-800">{currentDate}</p>
@@ -93,9 +118,8 @@ function OrderManagement({order}) {
                                 </td>
                             </tr>
 
-                        ))}
-
-
+                        ))
+                        )}
 
                     </tbody>
                 </table>
@@ -104,15 +128,19 @@ function OrderManagement({order}) {
             {/* Pagination UI */}
             <div className="flex flex-col items-center justify-between gap-4 border-t border-stone-200 bg-stone-50/70 px-6 py-4 sm:flex-row text-xs text-stone-500">
                 <p>
-                    Showing <span className="font-semibold text-stone-800">1</span> to{" "}
-                    <span className="font-semibold text-stone-800">1</span> of{" "}
-                    <span className="font-semibold text-stone-800">1</span> order
+                    Showing <span className="font-semibold text-stone-800">{order.length === 0 ? 0 : startIndex + 1}</span> to{" "}
+                    <span className="font-semibold text-stone-800">
+                        {Math.min(startIndex + ordersPerPage, order.length)}
+                    </span>{" "}
+                    of <span className="font-semibold text-stone-800">{order.length}</span> orders
                 </p>
 
                 <div className="flex items-center gap-2">
                     <button
                         type="button"
-                        className="cursor-pointer rounded-lg border border-stone-200 bg-white px-3 py-1.5 font-medium text-stone-600 transition-colors duration-150 hover:bg-stone-50 hover:text-stone-900 active:scale-[0.97]"
+                        className="cursor-pointer rounded-lg border border-stone-200 bg-white px-3 py-1.5 font-medium text-stone-600 transition-colors duration-150 hover:bg-stone-50 hover:text-stone-900 disabled:cursor-not-allowed disabled:opacity-40 active:scale-[0.97]"
+                        onClick={() => setCurrentPage(currentPage - 1)}
+                        disabled={currentPage <= 1}
                     >
                         Previous
                     </button>
@@ -120,19 +148,34 @@ function OrderManagement({order}) {
                     <div className="flex items-center gap-1">
                         <button
                             type="button"
-                            className="h-8 w-8 cursor-pointer rounded-lg font-semibold transition-colors duration-150 active:scale-[0.97] bg-orange-500 text-white shadow-xs"
+                            className={`h-8 w-8 cursor-pointer rounded-lg font-semibold transition-colors duration-150
+                            ${currentPage === 1
+                                    ? "bg-orange-500 text-white shadow-xs"
+                                    : "bg-gray-200 text-gray-700"
+                                }`}
+                            onClick={() => setCurrentPage(1)}
                         >
                             1
                         </button>
                         <button
                             type="button"
-                            className="h-8 w-8 cursor-pointer rounded-lg font-semibold transition-colors duration-150 active:scale-[0.97] border border-stone-200 bg-white text-stone-600 hover:bg-stone-50 hover:text-stone-900"
+                            className={`h-8 w-8 cursor-pointer rounded-lg font-semibold transition-colors duration-150
+                            ${currentPage === 2
+                                    ? "bg-orange-500 text-white shadow-xs"
+                                    : "bg-gray-200 text-gray-700"
+                                }`}
+                            onClick={() => setCurrentPage(2)}
                         >
                             2
                         </button>
                         <button
                             type="button"
-                            className="h-8 w-8 cursor-pointer rounded-lg font-semibold transition-colors duration-150 active:scale-[0.97] border border-stone-200 bg-white text-stone-600 hover:bg-stone-50 hover:text-stone-900"
+                            className={`h-8 w-8 cursor-pointer rounded-lg font-semibold transition-colors duration-150
+                            ${currentPage === 3
+                                    ? "bg-orange-500 text-white shadow-xs"
+                                    : "bg-gray-200 text-gray-700"
+                                }`}
+                            onClick={() => setCurrentPage(3)}
                         >
                             3
                         </button>
@@ -140,7 +183,9 @@ function OrderManagement({order}) {
 
                     <button
                         type="button"
-                        className="cursor-pointer rounded-lg border border-stone-200 bg-white px-3 py-1.5 font-medium text-stone-600 transition-colors duration-150 hover:bg-stone-50 hover:text-stone-900 active:scale-[0.97]"
+                        className="cursor-pointer rounded-lg border border-stone-200 bg-white px-3 py-1.5 font-medium text-stone-600 transition-colors duration-150 hover:bg-stone-50 hover:text-stone-900 disabled:cursor-not-allowed disabled:opacity-40 active:scale-[0.97]"
+                        onClick={() => setCurrentPage(currentPage + 1)}
+                        disabled={currentPage >= totalPages || totalPages === 0}
                     >
                         Next
                     </button>
