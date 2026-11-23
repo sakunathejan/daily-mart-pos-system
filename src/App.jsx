@@ -11,6 +11,7 @@ function App() {
   const [subTotal, setSubTotal] = useState(0.00);
   const [search, setSearch] = useState("");
   const [manageMode, setmanageMode] = useState("home");
+  const [order, setOrder] = useState([]);
 
   function handleChoosedProduct(product) {
     setChoosedProduct(c => [...c, product]);
@@ -30,50 +31,57 @@ function App() {
     setSearch(value);
   }
 
+  function handleOrder(orderDetails){
+    setOrder(o => [...o,orderDetails]);
+  }
+
   return (
-     <main className="min-h-screen bg-stone-100 p-4 sm:p-6">
+    <main className="min-h-screen bg-stone-100 p-4 sm:p-6">
 
-    <div className="mx-auto max-w-screen-2xl">
+      <div className="mx-auto max-w-screen-2xl">
 
-      {/* Always visible navigation */}
-      <NavBar
-        search={search}
-        onSearch={handleSearch}
-        manageMode={manageMode}
-        setManageMode={setmanageMode}
-      />
+        {/* Always visible navigation */}
+        <NavBar
+          search={search}
+          onSearch={handleSearch}
+          manageMode={manageMode}
+          setManageMode={setmanageMode}
+        />
 
-      {/* Home / POS page */}
-      {manageMode === "home" && (
-        <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_320px] xl:grid-cols-[minmax(0,1fr)_360px]">
+        {/* Home / POS page */}
+        {manageMode === "home" && (
+          <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_320px] xl:grid-cols-[minmax(0,1fr)_360px]">
 
-          <div className="min-w-0">
-            <AddProduct
-              onChooseProduct={handleChoosedProduct}
-              subTotalProductsPrice={handleSubTotal}
-              searched={search}
+            <div className="min-w-0">
+              <AddProduct
+                onChooseProduct={handleChoosedProduct}
+                subTotalProductsPrice={handleSubTotal}
+                searched={search}
+              />
+            </div>
+
+            <Receipt
+              choosedProduct={choosedProduct}
+              subTotal={subTotal}
+              onClearOrder={handleClearOrder}
+              order={order}
+              setOrder={setOrder}
+              handleOrder = {handleOrder}
             />
+
           </div>
+        )}
 
-          <Receipt
-            choosedProduct={choosedProduct}
-            subTotal={subTotal}
-            onClearOrder={handleClearOrder}
-          />
+        {/* Order Management page */}
+        {manageMode === "order management" && (
+          <div className="mt-6">
+            <OrderManagement choosedProduct={choosedProduct} order={order} />
+          </div>
+        )}
 
-        </div>
-      )}
+      </div>
 
-      {/* Order Management page */}
-      {manageMode === "order management" && (
-        <div className="mt-6">
-          <OrderManagement />
-        </div>
-      )}
-
-    </div>
-
-  </main>
+    </main>
   );
 }
 

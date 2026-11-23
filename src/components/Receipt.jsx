@@ -2,7 +2,7 @@ import { useState } from "react";
 import ChargePopUp from "./ChargePopUp";
 import { Toaster, toast } from "sonner";
 
-function Receipt({ choosedProduct, subTotal, onClearOrder }) {
+function Receipt({ choosedProduct, subTotal, onClearOrder, handleOrder }) {
   const tax = Number(subTotal) * 0.08;
   const total = Number(subTotal + tax);
 
@@ -112,7 +112,7 @@ function Receipt({ choosedProduct, subTotal, onClearOrder }) {
           <button type="button" className="mt-5 w-full cursor-pointer rounded-xl border-0 bg-orange-500 px-4 py-3 font-semibold text-white opacity-50 transition-colors duration-200 hover:bg-orange-600 hover:shadow-md active:scale-[0.97]" onClick={() => setShowForm(true)} > Charge </button>
         )}
 
-      <ChargePopUp showForm={showForm} setShowForm={setShowForm} total={total} dineMode={dineMode} onClearOrder={onClearOrder} choosedProduct={choosedProduct} orderNo={orderNo} handleOrderId={handleOrderId} />
+      <ChargePopUp showForm={showForm} setShowForm={setShowForm} total={total} dineMode={dineMode} onClearOrder={onClearOrder} choosedProduct={choosedProduct} orderNo={orderNo} handleOrderId={handleOrderId} handleOrder = {handleOrder} />
       <Toaster position="top-right" toastOptions={{classNames:{toast: "!bg-amber-100 !text-stone-900"}}}/>
     </div>
 

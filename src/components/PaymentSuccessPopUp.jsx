@@ -1,4 +1,19 @@
-function PaymentSuccessPopUp({ showSuccessForm, setShowSuccessForm, total, setShowForm, dineMode, onClearOrder, choosedProduct, orderNo, handleOrderId, paymentMethod }) {
+function PaymentSuccessPopUp({ showSuccessForm, setShowSuccessForm, total, setShowForm, dineMode, onClearOrder, choosedProduct, orderNo, handleOrderId, paymentMethod,handleOrder }) {
+    
+    function sendOrderDetails(){
+
+        const productNames = choosedProduct.map(item => item.productName).join(", ");
+        const orderDetails = {
+                orderNo: orderNo,
+                dineMode:dineMode,
+                productNames:productNames,
+                paymentMethod:paymentMethod,
+                total:total
+            }
+
+        handleOrder(orderDetails)
+    }
+    
     return (
         <>
             {showSuccessForm && (
@@ -46,7 +61,7 @@ function PaymentSuccessPopUp({ showSuccessForm, setShowSuccessForm, total, setSh
                             {choosedProduct.length} item sold. Receipt sent to the printer.
                         </p>
 
-                        <button type="button" className="mt-6 w-full cursor-pointer rounded-2xl border-0 bg-[#f25c2e] px-5 py-[18px] text-[17px] font-bold text-white transition-colors duration-200 hover:bg-[#e04f22] hover:shadow-lg active:scale-[0.97] focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-200" onClick={() => { setShowSuccessForm(false); setShowForm(false); onClearOrder(false); handleOrderId() }}>Start new order</button>
+                        <button type="button" className="mt-6 w-full cursor-pointer rounded-2xl border-0 bg-[#f25c2e] px-5 py-[18px] text-[17px] font-bold text-white transition-colors duration-200 hover:bg-[#e04f22] hover:shadow-lg active:scale-[0.97] focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-200" onClick={() => { setShowSuccessForm(false); setShowForm(false); onClearOrder(false); handleOrderId(); sendOrderDetails()}}>Start new order</button>
                     </section>
                 </div>
             )}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function OrderManagement() {
+function OrderManagement({choosedProduct, order}) {
 
     const currentDate = new Date().toLocaleDateString('en-GB', {
         day: 'numeric',
@@ -9,30 +9,9 @@ function OrderManagement() {
     });
 
     const currentTime = new Date().toLocaleTimeString();
+    
 
-    const [order, setOrder] = useState([
-        {
-            id: "#ORD-001",
-            date: currentDate,
-            time: currentTime,
-            dineMode: "Takeaway",
-            items: "2 x Yougurt, 1 x milk",
-            payment: "card",
-            total: "5000",
-            status: "complete"
-        },
-        {
-            id: "#ORD-002",
-            date: currentDate,
-            time: currentTime,
-            dineMode: "Takeaway",
-            items: "2 x Yougurt, 1 x milk",
-            payment: "card",
-            total: "5000",
-            status: "complete"
-        },
-
-    ])
+    
 
     return (
         <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
@@ -71,11 +50,16 @@ function OrderManagement() {
 
                             <tr className="transition-colors duration-150 hover:bg-stone-50/70">
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    <span className="font-semibold text-stone-900">{item.id}</span>
+                                    {Number(item.orderNo < 10 ) ? (
+                                        <span className="font-semibold text-stone-900">#ORD - 00{item.orderNo}</span>
+                                    ):(
+                                        <span className="font-semibold text-stone-900">#ORD - {item.orderNo}</span>
+                                    )}
+                                    
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    <p className="font-medium text-stone-800">{item.date}</p>
-                                    <p className="text-xs text-stone-400">{item.time}</p>
+                                    <p className="font-medium text-stone-800">{currentDate}</p>
+                                    <p className="text-xs text-stone-400">{currentTime}</p>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <span className="inline-flex items-center rounded-lg bg-stone-100 px-2.5 py-1 text-xs font-medium text-stone-700">
@@ -83,13 +67,13 @@ function OrderManagement() {
                                     </span>
                                 </td>
                                 <td className="px-6 py-4">
-                                    <p className="font-medium text-stone-800">{item.items}</p>
-                                    <p className="text-xs text-stone-400">3 items</p>
+                                    <p className="font-medium text-stone-800">{item.productNames}</p>
+                                    <p className="text-xs text-stone-400"></p>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <span className="inline-flex items-center gap-1.5 text-xs font-medium text-stone-700">
                                         <span className="h-2 w-2 rounded-full bg-emerald-500"></span>
-                                        {item.payment}
+                                        {item.paymentMethod}
                                     </span>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
