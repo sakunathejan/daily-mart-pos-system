@@ -1,3 +1,5 @@
+import OrderManagement from "./OrderManagement";
+
 function NavBar({ search, onSearch }) {
   return (
     <header className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
@@ -12,6 +14,7 @@ function NavBar({ search, onSearch }) {
         </div>
       </div>
 
+      <OrderManagement/>
       <label className="block w-full sm:max-w-sm">
         <span className="sr-only">Search the menu</span>
         <input

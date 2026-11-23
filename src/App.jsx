@@ -2,6 +2,7 @@ import NavBar from "./components/NavBar";
 import Receipt from "./components/Receipt";
 import AddProduct from "./components/AddProduct";
 import { useState } from "react";
+import OrderManagement from "./components/OrderManagement";
 
 
 function App() {
@@ -34,14 +35,11 @@ function App() {
         <div className="min-w-0">
           <NavBar search={search} onSearch={handleSearch}/>
           <AddProduct onChooseProduct={handleChoosedProduct} subTotalProductsPrice={handleSubTotal} searched={search}/>
+          
         </div>
 
 
-        <Receipt
-          choosedProduct={choosedProduct}
-          subTotal={subTotal}
-          onClearOrder={handleClearOrder}
-        />
+        <Receipt choosedProduct={choosedProduct} subTotal={subTotal} onClearOrder={handleClearOrder} />
       </div>
 
       
