@@ -1,6 +1,3 @@
-import { useState } from "react";
-import OrderManagement from "./OrderManagement";
-
 function NavBar({ search, onSearch, manageMode, setManageMode }) {
 
   
@@ -9,11 +6,11 @@ function NavBar({ search, onSearch, manageMode, setManageMode }) {
     <header className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
       <div className="flex shrink-0 items-center gap-3">
         <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-orange-500 font-bold text-white" onClick={()=>setManageMode("home")}>
-          PN
+          DM
         </div>
         <div>
           <h1 className="text-2xl font-bold text-stone-900">
-            Pay Nest
+            DailyMart POS
           </h1>
         </div>
       </div>

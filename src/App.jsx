@@ -35,6 +35,10 @@ function App() {
     setOrder(o => [...o,orderDetails]);
   }
 
+  function handleDeleteOrder(orderNo) {
+    setOrder(prev => prev.filter(item => item.orderNo !== orderNo));
+}
+
   return (
     <main className="min-h-screen bg-stone-100 p-4 sm:p-6">
 
@@ -75,7 +79,7 @@ function App() {
         {/* Order Management page */}
         {manageMode === "order management" && (
           <div className="mt-6">
-            <OrderManagement choosedProduct={choosedProduct} order={order} />
+            <OrderManagement choosedProduct={choosedProduct} order={order} onDeleteOrder={handleDeleteOrder}/>
           </div>
         )}
 

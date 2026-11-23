@@ -1,6 +1,10 @@
 import { useState } from "react";
+import BinButton from "./BinButton";
+
 // localStorage.clear();
-function OrderManagement({ order }) {
+function OrderManagement({ order, onDeleteOrder }) {
+
+    
 
     const currentDate = new Date().toLocaleDateString('en-GB', {
         day: 'numeric',
@@ -24,6 +28,8 @@ function OrderManagement({ order }) {
         startIndex,
         startIndex + ordersPerPage
     );
+
+    
 
 
     return (
@@ -109,12 +115,10 @@ function OrderManagement({ order }) {
                                     </span>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-right">
-                                    <button
-                                        type="button"
-                                        className="cursor-pointer rounded-lg border border-stone-200 px-3 py-1.5 text-xs font-medium text-stone-600 transition-colors duration-150 hover:border-orange-300 hover:bg-orange-50 hover:text-orange-600 active:scale-[0.97]"
-                                    >
-                                        Details
-                                    </button>
+                                    <div className="flex items-center justify-end gap-3">
+                                        
+                                        <BinButton currentOrders={currentOrders} onClick={()=>onDeleteOrder(item.orderNo)}/>
+                                    </div>
                                 </td>
                             </tr>
 
