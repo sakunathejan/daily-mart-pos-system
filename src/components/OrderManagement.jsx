@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-function OrderManagement({choosedProduct, order}) {
+function OrderManagement({order}) {
 
     const currentDate = new Date().toLocaleDateString('en-GB', {
         day: 'numeric',
