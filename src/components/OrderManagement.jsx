@@ -1,4 +1,39 @@
+import { useState } from "react";
+
 function OrderManagement() {
+
+    const currentDate = new Date().toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+    });
+
+    const currentTime = new Date().toLocaleTimeString();
+
+    const [order, setOrder] = useState([
+        {
+            id: "#ORD-001",
+            date: currentDate,
+            time: currentTime,
+            dineMode: "Takeaway",
+            items: "2 x Yougurt, 1 x milk",
+            payment: "card",
+            total: "5000",
+            status: "complete"
+        },
+        {
+            id: "#ORD-002",
+            date: currentDate,
+            time: currentTime,
+            dineMode: "Takeaway",
+            items: "2 x Yougurt, 1 x milk",
+            payment: "card",
+            total: "5000",
+            status: "complete"
+        },
+
+    ])
+
     return (
         <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
             <div className="overflow-x-auto">
@@ -32,49 +67,54 @@ function OrderManagement() {
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-stone-100 bg-white">
-                        <tr className="transition-colors duration-150 hover:bg-stone-50/70">
-                            <td className="px-6 py-4 whitespace-nowrap">
-                                <span className="font-semibold text-stone-900">#ORD-001</span>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                                <p className="font-medium text-stone-800">Nov 23, 2026</p>
-                                <p className="text-xs text-stone-400">10:45 AM</p>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                                <span className="inline-flex items-center rounded-lg bg-stone-100 px-2.5 py-1 text-xs font-medium text-stone-700">
-                                    Dine in
-                                </span>
-                            </td>
-                            <td className="px-6 py-4">
-                                <p className="font-medium text-stone-800">2× Milk, 1× Cheese</p>
-                                <p className="text-xs text-stone-400">3 items</p>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-stone-700">
-                                    <span className="h-2 w-2 rounded-full bg-emerald-500"></span>
-                                    Cash
-                                </span>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                                <span className="font-semibold text-stone-900">Rs. 4,200.00</span>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                                <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
-                                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-                                    Completed
-                                </span>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-right">
-                                <button
-                                    type="button"
-                                    className="cursor-pointer rounded-lg border border-stone-200 px-3 py-1.5 text-xs font-medium text-stone-600 transition-colors duration-150 hover:border-orange-300 hover:bg-orange-50 hover:text-orange-600 active:scale-[0.97]"
-                                >
-                                    Details
-                                </button>
-                            </td>
-                        </tr>
+                        {order.map((item, index) => (
 
-                        
+                            <tr className="transition-colors duration-150 hover:bg-stone-50/70">
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                    <span className="font-semibold text-stone-900">{item.id}</span>
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                    <p className="font-medium text-stone-800">{item.date}</p>
+                                    <p className="text-xs text-stone-400">{item.time}</p>
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                    <span className="inline-flex items-center rounded-lg bg-stone-100 px-2.5 py-1 text-xs font-medium text-stone-700">
+                                        {item.dineMode}
+                                    </span>
+                                </td>
+                                <td className="px-6 py-4">
+                                    <p className="font-medium text-stone-800">{item.items}</p>
+                                    <p className="text-xs text-stone-400">3 items</p>
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                    <span className="inline-flex items-center gap-1.5 text-xs font-medium text-stone-700">
+                                        <span className="h-2 w-2 rounded-full bg-emerald-500"></span>
+                                        {item.payment}
+                                    </span>
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                    <span className="font-semibold text-stone-900">Rs {item.total}</span>
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                    <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
+                                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                        Completed
+                                    </span>
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap text-right">
+                                    <button
+                                        type="button"
+                                        className="cursor-pointer rounded-lg border border-stone-200 px-3 py-1.5 text-xs font-medium text-stone-600 transition-colors duration-150 hover:border-orange-300 hover:bg-orange-50 hover:text-orange-600 active:scale-[0.97]"
+                                    >
+                                        Details
+                                    </button>
+                                </td>
+                            </tr>
+
+                        ))}
+
+
+
                     </tbody>
                 </table>
             </div>
