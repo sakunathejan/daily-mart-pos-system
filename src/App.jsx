@@ -3,6 +3,7 @@ import Receipt from "./components/Receipt";
 import AddProduct from "./components/AddProduct";
 import { useState } from "react";
 import OrderManagement from "./components/OrderManagement";
+import EditForm from "./components/EditForm";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [manageMode, setmanageMode] = useState("home");
   const [order, setOrder] = useState([]);
+  const [editItem, setEditItem] = useState([])
 
   function handleChoosedProduct(product) {
     setChoosedProduct(c => [...c, product]);
@@ -37,7 +39,11 @@ function App() {
 
   function handleDeleteOrder(orderNo) {
     setOrder(prev => prev.filter(item => item.orderNo !== orderNo));
-}
+  }
+
+  function handleEditItem(item){
+    setEditItem([item]);
+  }
 
   return (
     <main className="min-h-screen bg-stone-100 p-4 sm:p-6">
@@ -79,7 +85,8 @@ function App() {
         {/* Order Management page */}
         {manageMode === "order management" && (
           <div className="mt-6">
-            <OrderManagement choosedProduct={choosedProduct} order={order} onDeleteOrder={handleDeleteOrder}/>
+            <OrderManagement choosedProduct={choosedProduct} order={order} onDeleteOrder={handleDeleteOrder} handleEditItem={handleEditItem} editItem={editItem}/>
+            
           </div>
         )}
 

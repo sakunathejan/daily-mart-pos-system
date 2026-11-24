@@ -1,11 +1,10 @@
 import { useState } from "react";
 import BinButton from "./BinButton";
 import EditButton from "./EditButton";
+import EditForm from "./EditForm";
 
 // localStorage.clear();
-function OrderManagement({ order, onDeleteOrder }) {
-
-    
+function OrderManagement({ order, onDeleteOrder, handleEditItem, editItem }) {    
 
     const currentDate = new Date().toLocaleDateString('en-GB', {
         day: 'numeric',
@@ -29,6 +28,9 @@ function OrderManagement({ order, onDeleteOrder }) {
         startIndex,
         startIndex + ordersPerPage
     );
+
+    
+    const [showEditForm, setShowEditForm] = useState(false);
 
     
 
@@ -117,7 +119,7 @@ function OrderManagement({ order, onDeleteOrder }) {
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-right">
                                     <div className="flex items-center justify-end gap-3">
-                                        <EditButton />
+                                        <EditButton onClick={()=>{setShowEditForm(true); handleEditItem(item, currentDate, currentTime)}} />
                                         <BinButton currentOrders={currentOrders} onClick={()=>onDeleteOrder(item.orderNo)}/>
                                     </div>
                                 </td>
@@ -196,7 +198,9 @@ function OrderManagement({ order, onDeleteOrder }) {
                     </button>
                 </div>
             </div>
+            <EditForm showEditForm={showEditForm} setShowEditForm={setShowEditForm} editItem={editItem} currentDate={currentDate} currentTime={currentTime}/>
         </div>
+        
     );
 }
 
