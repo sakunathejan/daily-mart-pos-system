@@ -45,6 +45,10 @@ function App() {
     setEditItem([item]);
   }
 
+  function handleUpdateOrder(updatedOrder) {
+    setOrder(prev => prev.map(item => item.orderNo === updatedOrder.orderNo ? updatedOrder : item));
+  }
+
   return (
     <main className="min-h-screen bg-stone-100 p-4 sm:p-6">
 
@@ -85,7 +89,7 @@ function App() {
         {/* Order Management page */}
         {manageMode === "order management" && (
           <div className="mt-6">
-            <OrderManagement choosedProduct={choosedProduct} order={order} onDeleteOrder={handleDeleteOrder} handleEditItem={handleEditItem} editItem={editItem}/>
+            <OrderManagement choosedProduct={choosedProduct} order={order} onDeleteOrder={handleDeleteOrder} onUpdateOrder={handleUpdateOrder} handleEditItem={handleEditItem} editItem={editItem}/>
             
           </div>
         )}

@@ -2,9 +2,10 @@ import { useState } from "react";
 import BinButton from "./BinButton";
 import EditButton from "./EditButton";
 import EditForm from "./EditForm";
+import ViewDetailsModal from "./ViewDetailsModal";
 
 // localStorage.clear();
-function OrderManagement({ order, onDeleteOrder, handleEditItem, editItem }) {    
+function OrderManagement({ order, onDeleteOrder, handleEditItem, editItem, onUpdateOrder }) {    
 
     const currentDate = new Date().toLocaleDateString('en-GB', {
         day: 'numeric',
@@ -31,6 +32,13 @@ function OrderManagement({ order, onDeleteOrder, handleEditItem, editItem }) {
 
     
     const [showEditForm, setShowEditForm] = useState(false);
+    const [showDetailsModal, setShowDetailsModal] = useState(false);
+    const [selectedOrder, setSelectedOrder] = useState(null);
+
+    function handleViewDetails(item) {
+        setSelectedOrder(item);
+        setShowDetailsModal(true);
+    }
 
     
 
@@ -99,7 +107,7 @@ function OrderManagement({ order, onDeleteOrder, handleEditItem, editItem }) {
                                     </span>
                                 </td>
                                 <td className="px-6 py-4">
-                                    <p className="font-medium text-stone-800">{item.productNames}</p>
+                                    <p className="font-medium text-stone-800">{item.productNames || item.productName || item.items || "No items"}</p>
                                     <p className="text-xs text-stone-400"></p>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
@@ -112,13 +120,32 @@ function OrderManagement({ order, onDeleteOrder, handleEditItem, editItem }) {
                                     <span className="font-semibold text-stone-900">Rs {item.total}</span>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
-                                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-                                        Completed
-                                    </span>
+                                    {item.status === "Preparing" ? (
+                                        <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-2.5 py-1 text-xs font-semibold text-amber-700 ring-1 ring-inset ring-amber-600/20">
+                                            <span className="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
+                                            Preparing
+                                        </span>
+                                    ) : item.status === "Cancelled" ? (
+                                        <span className="inline-flex items-center gap-1.5 rounded-full bg-rose-50 px-2.5 py-1 text-xs font-semibold text-rose-700 ring-1 ring-inset ring-rose-600/20">
+                                            <span className="h-1.5 w-1.5 rounded-full bg-rose-500"></span>
+                                            Cancelled
+                                        </span>
+                                    ) : (
+                                        <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
+                                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                            {item.status || "Completed"}
+                                        </span>
+                                    )}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-right">
-                                    <div className="flex items-center justify-end gap-3">
+                                    <div className="flex items-center justify-end gap-2.5">
+                                        <button
+                                            type="button"
+                                            className="cursor-pointer rounded-lg border border-stone-200 bg-white px-3 py-1.5 text-xs font-semibold text-stone-700 transition-colors duration-150 hover:border-orange-300 hover:bg-orange-50 hover:text-orange-600 active:scale-[0.97]"
+                                            onClick={() => handleViewDetails(item)}
+                                        >
+                                            Details
+                                        </button>
                                         <EditButton onClick={()=>{setShowEditForm(true); handleEditItem(item, currentDate, currentTime)}} />
                                         <BinButton currentOrders={currentOrders} onClick={()=>onDeleteOrder(item.orderNo)}/>
                                     </div>
@@ -198,7 +225,14 @@ function OrderManagement({ order, onDeleteOrder, handleEditItem, editItem }) {
                     </button>
                 </div>
             </div>
-            <EditForm showEditForm={showEditForm} setShowEditForm={setShowEditForm} editItem={editItem} currentDate={currentDate} currentTime={currentTime}/>
+            <EditForm showEditForm={showEditForm} setShowEditForm={setShowEditForm} editItem={editItem} onUpdateOrder={onUpdateOrder} currentDate={currentDate} currentTime={currentTime}/>
+            <ViewDetailsModal
+                showModal={showDetailsModal}
+                setShowModal={setShowDetailsModal}
+                order={selectedOrder}
+                currentDate={currentDate}
+                currentTime={currentTime}
+            />
         </div>
         
     );
