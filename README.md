@@ -1,11 +1,11 @@
-# Pay Nest POS System 🛒💳
+# Daily Mart POS System 🛒💳
 
 [![React](https://img.shields.io/badge/React-19.3.1-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-8.3.6-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-**Pay Nest** is a modern, responsive Point of Sale (POS) system built with **React 19**, **Vite**, and **Tailwind CSS v4**. Designed for retail stores, cafes, and restaurants, it provides an intuitive interface for managing live sales, orders, customer relations, and payments.
+**DailyMart** is a modern, responsive Point of Sale (POS) system built with **React 19**, **Vite**, and **Tailwind CSS v4**. Designed for retail stores, cafes, and restaurants, it provides an intuitive interface for managing live sales, orders, customer relations, and payments.
 
 ---
 
