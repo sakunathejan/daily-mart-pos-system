@@ -4,7 +4,6 @@ import AddProduct from "./components/AddProduct";
 import { useState } from "react";
 import OrderManagement from "./components/OrderManagement";
 import CustomerManagement from "./components/CustomerManagement";
-import EditForm from "./components/EditForm";
 
 
 function App() {
