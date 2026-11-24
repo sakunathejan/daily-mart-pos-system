@@ -3,6 +3,7 @@ import Receipt from "./components/Receipt";
 import AddProduct from "./components/AddProduct";
 import { useState } from "react";
 import OrderManagement from "./components/OrderManagement";
+import CustomerManagement from "./components/CustomerManagement";
 import EditForm from "./components/EditForm";
 
 
@@ -91,6 +92,13 @@ function App() {
           <div className="mt-6">
             <OrderManagement choosedProduct={choosedProduct} order={order} onDeleteOrder={handleDeleteOrder} onUpdateOrder={handleUpdateOrder} handleEditItem={handleEditItem} editItem={editItem}/>
             
+          </div>
+        )}
+
+        {/* Customer Management page */}
+        {manageMode === "customer management" && (
+          <div className="mt-6">
+            <CustomerManagement />
           </div>
         )}
 
