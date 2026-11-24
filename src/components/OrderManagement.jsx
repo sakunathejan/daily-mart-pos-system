@@ -1,5 +1,6 @@
 import { useState } from "react";
 import BinButton from "./BinButton";
+import EditButton from "./EditButton";
 
 // localStorage.clear();
 function OrderManagement({ order, onDeleteOrder }) {
@@ -116,7 +117,7 @@ function OrderManagement({ order, onDeleteOrder }) {
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-right">
                                     <div className="flex items-center justify-end gap-3">
-                                        
+                                        <EditButton />
                                         <BinButton currentOrders={currentOrders} onClick={()=>onDeleteOrder(item.orderNo)}/>
                                     </div>
                                 </td>
