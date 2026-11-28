@@ -65,7 +65,7 @@ function AddProduct({ onChooseProduct, subTotalProductsPrice, searched }) {
         setCategory("")
         setDescription("")
         setPrice("")
-        setImage(URL.createObjectURL(""))
+        setImage(null)
 
     }
 
